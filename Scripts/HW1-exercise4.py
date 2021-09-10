@@ -29,7 +29,6 @@ print(simulate_drug_use(100, 50))
 # sample's responses to the protocol from the slides. In particular, for each study participant, they flip a coin 
 # (choose one of two paths randomly with equal probability). If they flip "heads", they flip a coin and either report 
 # True or False (with equal probability). If instead, they flip "tails", they report their drug use status (True or False). 
-# (Hint: You can select a sample of a population using random.sample (Links to an external site.).) 
  
 
 def simulate_sample_response(n, d, s):
@@ -39,7 +38,7 @@ def simulate_sample_response(n, d, s):
     # s = sample size
     
     drug_use_response = simulate_drug_use(n, d) # List of drug use in populaiton 
-    sample = random.sample(drug_use_response, s) # Randomly select a list of drug use in sample of 50 
+    sample = random.sample(drug_use_response, s) # Randomly select a list of drug use in a chosen number of sample 
 
 
     for s in range(0, len(sample)): 
@@ -53,7 +52,7 @@ def simulate_sample_response(n, d, s):
         
 
 
-# Test the above function (can take out)
+# Test the above function 
 
 
 print(simulate_sample_response(1000, 100, 50))
@@ -98,7 +97,6 @@ print(estimated_drug_users)
 # your readme; 2 points) and plot a histogram showing the predictions (4 points).
 
 
- # justify the number
 number_of_trials = 1000
 
 result_4e = []
@@ -125,7 +123,6 @@ print(estimated_drug_users)
 # Output: -49080.0
 
 
-# justify the number
 number_of_trials = 100
 
 result_4f = []
@@ -150,8 +147,8 @@ estimated_drug_users = fraction_estimated_drug_users*1000
 print(estimated_drug_users)
 # Output: 380
 
-random.seed(100) # justify the number
-number_of_trials = 100
+
+number_of_trials = 1000
 
 result_4g = []
 for trials in range(number_of_trials):
