@@ -131,8 +131,8 @@ print(find_difference_in_days(states_2))
 # New York has its highest number of cases first. 
 # New York and Connecticut have 86 between them.
 
-states_2 = ["New Jersey", "Connecticut"]
-print(find_difference_in_days(states_2))
+states_3 = ["New Jersey", "Connecticut"]
+print(find_difference_in_days(states_3))
 
 # Output: New Jersey has its highest number of cases on 2021-01-04 00:00:00
 
