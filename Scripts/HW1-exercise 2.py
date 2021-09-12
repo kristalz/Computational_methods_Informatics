@@ -71,6 +71,14 @@ print(max_weight)
         p9.ggplot(data, p9.aes("age", "weight")) + p9.geom_point()
 )
 
+# The short way: 
+
+data_outlier = data[data["age"] >= 25]
+data_outlier = data_outlier[data_outlier["age"] <= 50]
+print(data_outlier)
+print(data_outlier[data_outlier["weight"] < 25]["name"])
+
+# The long way: 
 
 ## Visualize the statistics of data
 
