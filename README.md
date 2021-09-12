@@ -102,7 +102,25 @@ Step 6: Make a scatterplot of the weights vs the ages and determine the relation
 
 2. Weights increased almost linearly with ages from birth to about 20, then become steady afterwards. People who weighed more at birth also weighed more in their adulthood. 
 
-Step 7: Find the outlier in the scatterplot and return the person name by using the interquantile range(IQR) in the following steps. 
+Step 7: Find the outlier in the scatterplot and return the person name. (Edit 9/12: I realized I did a long way to find the outlier originally. In fact, I could have done it faster and got the same answer. I include both ways display as following.)
+
+The short way: 
+
+1. From the scatterplot I knew that the outlier aged between 25 and 50. Thus I locate a group of population in this age group using the following code:
+```
+data_outlier = data[data["age"] >= 25]
+data_outlier = data_outlier[data_outlier["age"] <= 50]
+```
+
+2. Again from the scatter plot I knew that the outlier weighed roughly below 25. Therefore, I can simply found the data_outlier whose weight was under 25. 
+```
+data_outlier[data_outlier["weight"] < 25]["name"]
+```
+
+I got the answer was Anthony Freeman.
+
+The long way: (Use the interquantile range(IQR) in the following steps)
+
 1. Use `data.describe()` to visualize the statistics of the data, which summarize the distribution of ages and weights in 25, 50 , 75% groups respectively. 
 
 ![weight_age_stats](https://github.com/kristalz/BIS634/blob/main/Images/weight_age_stats.png)
