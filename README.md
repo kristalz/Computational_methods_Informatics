@@ -117,7 +117,7 @@ data_outlier = data_outlier[data_outlier["age"] <= 50]
 data_outlier[data_outlier["weight"] < 25]["name"]
 ```
 
-I got the answer was Anthony Freeman.
+I got the answer "Anthony Freeman".
 
 The long way: (Use the interquantile range(IQR) in the following steps)
 
@@ -135,7 +135,7 @@ data_outlier = data_outlier[data_outlier["age"] <= 50]
 ```
 Finally, locate the person who weighed beneath the lower bound in this group of population given the condition `data_outlier["weight"] < lower_bound` 
 
-I got the result was Anthony Freeman.
+I got the result "Anthony Freeman".
 
 
 ## Exercise 3
