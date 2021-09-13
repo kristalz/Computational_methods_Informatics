@@ -212,6 +212,22 @@ Step 5：Make a function `find_date_highest_new_cases` that takes a name of stat
 4. Compare `previous_cases_difference` with the up-to-date new cases by using a for loop. If the up-to-date new cases are larger than the new cases occurred previously, override the `current_cases_difference` over  `previous_cases_difference`. 
 5. Return the date when up-to-date new cases (i.e., `current_cases_difference`) occur. 
 
+```
+def find_date_highest_new_cases(test_state):
+    test_cases = np.array(covid_data[covid_data["state"] == test_state]["cases"])
+    test_dates = np.array(covid_data[covid_data["state"] == test_state]["date"])
+    
+    previous_cases_difference = test_cases[1] - test_cases[0]
+
+    for i in range(2, len(test_dates)):
+        current_cases_difference = test_cases[i] - test_cases[i-1]
+        if previous_cases_difference <= current_cases_difference:
+            previous_cases_difference = current_cases_difference
+            current_highest_date = pd.to_datetime(test_dates[i])
+    return current_highest_date
+
+```
+
 Step 6: Test the function `find_date_highest_new_cases`
 ```
 print(find_date_highest_new_cases("New York")) 
@@ -230,6 +246,10 @@ Step 7: Make a function `find_difference_in_days` that takes a list of two state
 2. Find the date when each state has their highest number of cases by using the previous function `find_date_highest_new_cases` and store in `date1` and `date2`, respectively. 
 3. Subtract the difference between the two dates. 
 4. Find out which state has the highest cases first: If the days_differences are positive, the second state has the highest cases first; othewise the first state has the highest cases first. For each scenario, print out the days differences between them. The last scenario is that two states have the highest cases on the same date. 
+
+```
+
+```
 
 Step 8: Test the above funciton using the following examples:
 
