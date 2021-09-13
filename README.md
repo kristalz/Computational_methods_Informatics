@@ -248,6 +248,24 @@ Step 7: Make a function `find_difference_in_days` that takes a list of two state
 4. Find out which state has the highest cases first: If the days_differences are positive, the second state has the highest cases first; othewise the first state has the highest cases first. For each scenario, print out the days differences between them. The last scenario is that two states have the highest cases on the same date. 
 
 ```
+def find_difference_in_days(states):
+    state1 = states[0]
+    state2 = states[1]
+    date1 = (find_date_highest_new_cases(state1)) 
+    print(f"{state1} has its highest number of cases on {date1}\n")
+    date2 = (find_date_highest_new_cases(state2))
+    print(f"{state2} has its highest number of cases on {date2}\n")
+    days_differences = (date1 - date2).days
+    if days_differences > 0:
+        print(
+            f"{state1} has its highest number of cases first. \n{state1} and {state2} have {days_differences} "
+            f"between them.\n")
+    elif days_differences < 0:
+        print(
+            f"{state2} has its highest number of cases first. \n{state1} and {state2} have {days_differences} "
+            f"between them.\n")
+    elif days_differences == 0:
+        print(f"{state1} and {state2} have the same peak number in cases.\n")
 
 ```
 
