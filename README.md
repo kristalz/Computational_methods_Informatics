@@ -18,6 +18,18 @@ Step 3: Within function `judge`, creates a condition for normal temperature rang
 
 Step 4: Return function `judge` that prints out the result of the tested temperature `temp`.
 
+```
+def temp_tester(temp):
+    def judge(normal_temp):
+        if abs(normal_temp - temp) <= 1:
+            return True
+        else:
+            return False
+
+    return judge
+
+```
+
 ### Test the Function
 </br>
 
@@ -165,6 +177,10 @@ Step 3: Make a function `plot_state_by_cases` that takes state names `state_list
 `test_covid_data = covid_data[covid_data["state"].isin(state_list[:])]`
 
 2. Graph the test_covid_data
+
+```
+
+```
 
 Step 4： Test the function `plot_state_by_cases` using the following examples:
 
