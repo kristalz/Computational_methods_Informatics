@@ -74,7 +74,7 @@ print(sd_age) # 24.152760068601573
 print(min_age) # 0.0007476719217636152
 print(max_age) # 99.99154733076972
 ```
-2. Plot a histogram distribution by using plotnine: `import plotnine as p9`. Then return the histogram using `geom_histogram`. Here, I used `bin = 100` because the `age` roughly ranged from birth-100. 
+2. Plot a histogram distribution by using plotnine: `import plotnine as p9`. Then return the histogram using `geom_histogram`. Here, I used `bin = 100` because the `age` roughly ranged from birth to 100. The number of bins affect the ability of a histogram to identify the underlying trends of data.
 
 ![age_distribution](https://github.com/kristalz/BIS634/blob/main/Images/age_distribution.png)
 
