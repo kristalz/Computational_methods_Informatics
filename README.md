@@ -180,6 +180,14 @@ Step 3: Make a function `plot_state_by_cases` that takes state names `state_list
 
 ```
 
+    graph = (
+            p9.ggplot(test_covid_data, p9.aes("date", "cases", color="state")) +
+            p9.geom_line() +
+            p9.scale_y_continuous(trans='log10') +
+            p9.theme(axis_text_x=p9.element_text(angle=20))
+    )
+    graph.draw()
+
 ```
 
 Step 4： Test the function `plot_state_by_cases` using the following examples:
