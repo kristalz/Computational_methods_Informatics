@@ -416,7 +416,7 @@ print(estimated_drug_users)
 
 ### 4e. 
 
-I used 1000 trials to test the function in 4c when my population is 1000, because the trials I want to test should be at least cover the total population.
+I used 1000 trials to test the function in 4c when my population is 1000, because the trials I want to test should be at least cover the total population. In other words, I chose the least amount of trials to test the entire population. 
 
 I imported matplotlib tho plot the histogram of the test results: 
 
@@ -457,4 +457,4 @@ I used 1000 trials for the same reason described in 4e.
 
 ![4g_plot](https://github.com/kristalz/BIS634/blob/main/Images/4g_plot.png)
 
-My result this time was more distributed comparing to the results in 4e and 4f. Most trials returned around 500 drug users and no trials returned negative drug users. This could mean that the number of trials I selected was enough to cover all the tested population. 
+My result this time was more distributed comparing to the results in 4e and 4f. Most trials returned around 500 drug users and no trials returned negative drug users. This could mean that the number of trials I selected was enough to cover all the tested population. Another reason could be that when the drug users in 4g increased to 5 times the drug users in 4e while the total population remained the same, there were more drug users predicted in 4g than those in 4e. Therefore, it would be less likely to return negative numbers of predicted drug users when the true drug users rates were higher.
