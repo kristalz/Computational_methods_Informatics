@@ -76,6 +76,8 @@ def predict_drug_user_fraction(n, d, s):
     espected_drug_users_rate = espected_drug_users/s
 
     fraction_estimated_drug_users = (espected_drug_users_rate - 0.25)/0.5
+    if fraction_estimated_drug_users <= 0:
+        fraction_estimated_drug_users = 0
     return fraction_estimated_drug_users
 
 
@@ -116,11 +118,11 @@ plt.hist(result_4e)
 
 fraction_estimated_drug_users = predict_drug_user_fraction(100000, 10000, 5000)
 print(fraction_estimated_drug_users)
-# Output: -0.4908
+# Output: 0.4936
 
 estimated_drug_users = fraction_estimated_drug_users*100000
 print(estimated_drug_users)
-# Output: -49080.0
+# Output: 49360
 
 
 number_of_trials = 100
