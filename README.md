@@ -428,18 +428,18 @@ Repeat the steps in 4d and 4e for n = 100000, d = 10000, and s = 5000:
 ```
 fraction_estimated_drug_users = predict_drug_user_fraction(100000, 10000, 5000)
 print(fraction_estimated_drug_users)
-# -0.4908
+# 0.4936
 
 estimated_drug_users = fraction_estimated_drug_users*100000
 print(estimated_drug_users)
-# -49080.0
+# 49360
 ```
 
 I used 100 trials to test the function due to limited memory storage to test the large number of population. 
 
 ![4f_plot](https://github.com/kristalz/BIS634/blob/main/Images/4f_plot.png)
 
-My result fell in the two extreme cases by in this example comparing to result using n = 1000, d = 100, and s = 50 in 4f, in which the trails of drug users are spread out in a wider range of number. The plot returned 50 trials with negative drug-users (i.e., no drug users) and 50 trials with more than 4,000 drug users. I think this extreme case might be due to the trial numbers I chose: There might be not enough trials to test all the population (n = 100000). 
+My result fell in the two extreme cases by in this example comparing to result using n = 1000, d = 100, and s = 50 in 4f, in which the trails of drug users are spread out in a wider range of number. The plot returned 50 trials with many 0 drug-users (many of them might be negative values) and 50 trials with around 50,000 drug users. I think this extreme case might be due to the trial numbers I chose: There might be not enough trials to test all the population (n = 100000). 
 
 ### 4g. 
 Repeat the steps in 4d and 4e for n = 1000, d = 500, and s = 50:
@@ -457,4 +457,4 @@ I used 1000 trials for the same reason described in 4e.
 
 ![4g_plot](https://github.com/kristalz/BIS634/blob/main/Images/4g_plot.png)
 
-My result this time was more distributed comparing to the results in 4e and 4f. Most trials returned around 500 drug users and no trials returned negative drug users. This could mean that the number of trials I selected was enough to cover all the tested population. Another reason could be that when the drug users in 4g increased to 5 times the drug users in 4e while the total population remained the same, there were more drug users predicted in 4g than those in 4e. Therefore, it would be less likely to return negative numbers of predicted drug users when the true drug users rates were higher.
+My result this time was more distributed comparing to the results in 4e and 4f. Most trials returned around 500 drug users and fewer trials returned zero drug users. This could mean that the number of trials I selected was enough to cover all the tested population. Another reason could be that when the drug users in 4g increased to 5 times the drug users in 4e while the total population remained the same, there were more drug users predicted in 4g than those in 4e. Therefore, it would be less likely to return negative numbers of predicted drug users when the true drug users rates were higher.
