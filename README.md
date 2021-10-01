@@ -61,7 +61,7 @@ Step 8: Describe how you could find the second oldest person's name in O(n) time
 
 Step 9: Use bisection on your sorted list to identify the patient who is 41.5 years old. 
 
-1. Created a function `binary_search` that took the sorted age list and a specific age as parameter, then returned the index of the age I wanted to find. For every comparison between the age I wanted to find and the middle age of the age range, if the middle age wass larger, I decreased the searching size to the left side of the middle age, and to the right side if the middle age was smaller. (Reference: https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7). 
+1. I created a function `binary_search` that took the sorted age list and a specific age as parameter, then returned the index of the age I wanted to find. For every comparison between the age I wanted to find and the middle age in the list, if the middle age was larger, I decreased the searching size to the left side of the middle age, and to the right side if the middle age was smaller. If the age I wanted to find was equal to the value in the middle age, the function would return the middle. The function would repeat the steps above until the specific age was found or the left bounder was equal or higher than the right age bound.(Reference: https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7). 
 
 2. Because my function took the left side as the lower age bound and right side as the upper age bound, I made an ascending age list using `sorted` function and returned a list `sorted_age`. 
 3. I found the location of age 41.5 as [173886]. I then sorted the `patients` list I made earlier in an ascending order and returned the patient name by using the index I found. The patient name was `John Braswell`. 
@@ -71,8 +71,8 @@ Step 10: To find the number of patients who are at least 41.5 years old, I used 
 Step 11: Generalizing the above, write a function that in O(log n) time returns the number of patients who are at least low_age years old but are strictly less than high_age years old. 
 
 1. I created a function `find_num_age_range` that took the ascending sorted age list, the low_age, and the high_age as parameters. 
-2. In the function, I used my original `binary_search` funciton to find the positions of low_age and high_age, respectively. Then I found found difference in their positions.  
-3. This function would work because finding the locations of the both low and high age using the `binary_search` function I made took O(log n) time. Therefore, the entire function was 2 x O(log n) time and still in O(log n) time. 
+2. In the function, I made two while loops using the one I made in my original `binary_search` funciton with some modifications to find the positions of `low_age` and `high_age`, respectively. I exited the while loops when the low or high ages were neither smaller nor larger than the middle age in their searching area. The middle age in the searching area for the `low_age` (`middle_low`) would become left(low) bound, while the middle age for the `high_age` searching area (`middle_high`) would become the right(high) bound. Then I returned the difference between `middle_low` and `middle_high` as differences in low and high age's indexes.
+3. This function would work because finding the indexes of the both low and high age using the modified `binary_search` function I described above took O(log n) time. Therefore, the entire function was 2 x O(log n) time and still in O(log n) time. 
 4. I tested the function using four groups of number and confirmed my results using `len` function to filter the tested age range. I got the same results from four tests: There are 169212 between 20 and 60; 92087 between 20 and 41.5; 165565 between 1 and 40.5; 134761 between 32 and 64.
 
 Step 12: Modify the above, to provide a function that returns both the total number of patients in an age range AND the number of males in the age range, all in O(log n) time as measured after any initial data setup.
@@ -81,7 +81,7 @@ Step 12: Modify the above, to provide a function that returns both the total num
 2. I sorted `patient_new_list` in an ascending order. 
 3. I extracted a list that only included male patients and named it as `res`. (Reference: https://www.geeksforgeeks.org/python-filter-tuples-according-to-list-element-presence/). Then I sorted `res` in an ascending order as `sorted_age_male`. 
 4. I created a function `find_num_age_range_new` that took the ascending sorted age list, the ascending sorted male age list, the low_age, and the high_age as parameters. Inside the function, I simply used the function `find_num_age_range` I created earlier to count the number between of low_age and high_age in both sorted age and sorted male age list. 
-5. Again, this function took O(log n) time because the four indexes both used O(log n) to located the position of a specific age. 4 x O(log n) was still O(log n). 
+5. Again, this function took O(log n) time because the each search used O(log n) going through thet total and male age lists. The entire function was 4 x O(log n) and still in O(log n). 
 6. I tested my function using 4 different groups and used the `len` function to confirm my results. Using both methods returned the same results: Test 1: There are 169212 in total and and 83542 in males between 20. Test 2: There are 160608 in total and 78247 in males between 30 and 70. Test 3: There are 105076 in total and 52797 in males between 10 and 35. Test 4: There are 147090 in total and 74149 in males between 5 and 40.
 
 ## Exercise 2
