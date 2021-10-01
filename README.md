@@ -31,7 +31,7 @@ Step 3: Find all patient ages and store them in the list `age`
 
 Step 4: Import matplotlib to plot a histogram of `age`
 
-![hw2_exercise1_plot1]()
+![hw2_exercise1_plot1](https://github.com/kristalz/BIS634/blob/main/Images/hw2_exercise1_plot1.jpg)
 
 Step 5: Find if there are any patients share the same age. I changed the `age` from a list to a set, and compare it with the original list. Because "set" does not allow duplication. (Reference: https://stackoverflow.com/questions/1541797/how-do-i-check-if-there-are-duplicates-in-a-flat-list) 
 
@@ -42,7 +42,7 @@ I got a result `True`, which meant that no patients sharing the same exact age.
 If multiple patients having the same age, there would be multiple locations in when we want to find the index of a specific age. Therefore, there would be different number of patients in certain age range depending on the indexes of the age bound I set. For example, if I want to find the index of age 25 and suppose from index [1000] and [1005] represent age 25 after sorting the list. Then I need to find the first index that represent age 25 also to count all the numbers of patients with the same age. 
 
 Step 6: Find all patient genders and store them in the list `gender`. Plot a histogram of `gender`.
-![hw2_exercise1_plot2]()
+![hw2_exercise1_plot2](https://github.com/kristalz/BIS634/blob/main/Images/hw2_exercise1_plot2.jpg)
 
 This provider encoded gender in "string". They classified gender in categories "male", "female", and "unknown". 
 
@@ -191,7 +191,7 @@ I identified a dataset about access and use of telemedicine during COVID 19 from
 During COVID-19 quarantine time, telemedicine offers an opportunity for patients to access healthcare without potential risk for pandemic exposure. RANDS conducted three rounds of surveys (between June 9, 2020 and July 6, 2020, August 3, 2020 and August 20, 2020, and May 17, 2021 and June 30, 2021) for people at least 18 years old to show the percentages of U.S. adults 1) who have a usual place of care and a provider that offered telemedicine in the past 2 months, 2) who used telemedicine in the past 2 months, or 3) who have a usual place of care and a provider that offered telemedicine prior to the pandemic. 
 
 I downloaded the csv data and stored it as a panda dataframe in `access_and_use_telemedicine`. I examined the head of the dataframe. 
-![hw2_exercise4_dataset]()
+![hw2_exercise4_dataset](https://github.com/kristalz/BIS634/blob/main/Images/hw2_exercise4_dataset.jpg)
 
 There are 11 variables in the data: 'Round','Indicator','Group', 'Subgroup', 'Sample Size', 'Response', 'Percent', 'Standard Error', 'Suppression', 'Significant 1', 'Significant 2'. 
 
