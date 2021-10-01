@@ -55,13 +55,13 @@ Step 7: Sort the patients by age and store the result in a list and find the old
 
 Step 8: Describe how you could find the second oldest person's name in O(n) time. Discuss when it might be advantageous to sort and when it is better to just use the O(n) solution.
 
-1. First I can use find `max` function to find the oldest patient's age. Then I could loop through the entire list to find which patient's age is the largest after removing the oldest one. Thus it is O(n) time. 
+1. First I can use find `max` function to find the oldest patient's age. Then I could loop through the entire list to find which patient's age is the largest (the new oldest age) after removing the oldest one. Thus it is O(n) time. 
 
 2. It might be advantageous to sort the list when I want to quickly return the value and when the number of items in the list is relatively large (n is large). It is better to just use the O(n) solution when I do not want to change the orginal list and when n is small. 
 
 Step 9: Use bisection on your sorted list to identify the patient who is 41.5 years old. 
 
-1. Created a function `binary_search` that took the sorted age list and a specific age as parameter, then returned the index of the age I wanted to find. For every comparison between the age I wanted to find and the middle age of the age range, if the middle age wass larger, I decreased the searching size to the left side of the middle age, and right side if the middle age was smaller. (Reference: https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7). 
+1. Created a function `binary_search` that took the sorted age list and a specific age as parameter, then returned the index of the age I wanted to find. For every comparison between the age I wanted to find and the middle age of the age range, if the middle age wass larger, I decreased the searching size to the left side of the middle age, and to the right side if the middle age was smaller. (Reference: https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7). 
 
 2. Because my function took the left side as the lower age bound and right side as the upper age bound, I made an ascending age list using `sorted` function and returned a list `sorted_age`. 
 3. I found the location of age 41.5 as [173886]. I then sorted the `patients` list I made earlier in an ascending order and returned the patient name by using the index I found. The patient name was `John Braswell`. 
@@ -71,9 +71,9 @@ Step 10: To find the number of patients who are at least 41.5 years old, I used 
 Step 11: Generalizing the above, write a function that in O(log n) time returns the number of patients who are at least low_age years old but are strictly less than high_age years old. 
 
 1. I created a function `find_num_age_range` that took the ascending sorted age list, the low_age, and the high_age as parameters. 
-2. In the function, I used my original `binary_search` funciton find the positions of low_age and high_age respectively and returned the difference between them.  
+2. In the function, I used my original `binary_search` funciton to find the positions of low_age and high_age, respectively. Then I found found difference in their positions.  
 3. This function would work because finding the locations of the both low and high age using the `binary_search` function I made took O(log n) time. Therefore, the entire function was 2 x O(log n) time and still in O(log n) time. 
-4. I tested the function using four groups of number and confirmed my result using `len` function to filter the tested age range. I got the same results from four tests: There are 169212 between 20 and 60; 92087 between 20 and 41.5; 165565 between 1 and 40.5; 134761 between 32 and 64.
+4. I tested the function using four groups of number and confirmed my results using `len` function to filter the tested age range. I got the same results from four tests: There are 169212 between 20 and 60; 92087 between 20 and 41.5; 165565 between 1 and 40.5; 134761 between 32 and 64.
 
 Step 12: Modify the above, to provide a function that returns both the total number of patients in an age range AND the number of males in the age range, all in O(log n) time as measured after any initial data setup.
 
@@ -82,7 +82,7 @@ Step 12: Modify the above, to provide a function that returns both the total num
 3. I extracted a list that only included male patients and named it as `res`. (Reference: https://www.geeksforgeeks.org/python-filter-tuples-according-to-list-element-presence/). Then I sorted `res` in an ascending order as `sorted_age_male`. 
 4. I created a function `find_num_age_range_new` that took the ascending sorted age list, the ascending sorted male age list, the low_age, and the high_age as parameters. Inside the function, I simply used the function `find_num_age_range` I created earlier to count the number between of low_age and high_age in both sorted age and sorted male age list. 
 5. Again, this function took O(log n) time because the four indexes both used O(log n) to located the position of a specific age. 4 x O(log n) was still O(log n). 
-6. I tested my function using 4 different groups and used the `len` function to confirmed my results. Using both methods returned the same results: Test 1: There are 169212 in total and and 83542 in males between 20. Test 2: There are 139006 in total and 67519 in males between 35 and 70. Test 3: There are 105076 in total and 52797 in males between 10 and 35. Test 4: There are 147090 in total and 74149 in males between 5 and 40.
+6. I tested my function using 4 different groups and used the `len` function to confirm my results. Using both methods returned the same results: Test 1: There are 169212 in total and and 83542 in males between 20. Test 2: There are 139006 in total and 67519 in males between 35 and 70. Test 3: There are 105076 in total and 52797 in males between 10 and 35. Test 4: There are 147090 in total and 74149 in males between 5 and 40.
 
 ## Exercise 2
 <br/>
@@ -145,6 +145,7 @@ Step 3: I created a `find_min_hash` function would find find the minimal hash va
 4. I made another for loop that enumerated the process list which would return the processing results. Inside this for loop, I made an inner for loop that would `get` the queueing results from each worker, who compared the new hash values with the original hash values in the min_list. 
 5. Finally, I ended process by joining results from all workers. 
 6. I found all the min hash values for the 100 hash families. My function returned the same values as those in my previous method: for 5-hash, 10-hash, 50-hash, 100-hash functions, the median minimal hash values were `177, 247.5, 167.5 and 170.5`, respectively. After dividing by scale, I had `5.15137799099179e-09, 7.203198038251232e-09, 4.874891601644773e-09 and 4.9622030930175156e-09`,`194122815, 138827225, 205132765` and `201523391` minimal distinguished numbers for each of the five hash function above. My comparison was the same as that of my previous method. 
+7. Because I got the same results using both methods, I could convince myself they both worked. 
 
 
 ## Exercise 3
