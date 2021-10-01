@@ -82,7 +82,7 @@ Step 12: Modify the above, to provide a function that returns both the total num
 3. I extracted a list that only included male patients and named it as `res`. (Reference: https://www.geeksforgeeks.org/python-filter-tuples-according-to-list-element-presence/). Then I sorted `res` in an ascending order as `sorted_age_male`. 
 4. I created a function `find_num_age_range_new` that took the ascending sorted age list, the ascending sorted male age list, the low_age, and the high_age as parameters. Inside the function, I simply used the function `find_num_age_range` I created earlier to count the number between of low_age and high_age in both sorted age and sorted male age list. 
 5. Again, this function took O(log n) time because the four indexes both used O(log n) to located the position of a specific age. 4 x O(log n) was still O(log n). 
-6. I tested my function using 4 different groups and used the `len` function to confirm my results. Using both methods returned the same results: Test 1: There are 169212 in total and and 83542 in males between 20. Test 2: There are 139006 in total and 67519 in males between 35 and 70. Test 3: There are 105076 in total and 52797 in males between 10 and 35. Test 4: There are 147090 in total and 74149 in males between 5 and 40.
+6. I tested my function using 4 different groups and used the `len` function to confirm my results. Using both methods returned the same results: Test 1: There are 169212 in total and and 83542 in males between 20. Test 2: There are 160608 in total and 78247 in males between 30 and 70. Test 3: There are 105076 in total and 52797 in males between 10 and 35. Test 4: There are 147090 in total and 74149 in males between 5 and 40.
 
 ## Exercise 2
 <br/>
