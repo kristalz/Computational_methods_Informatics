@@ -11,7 +11,7 @@ print(len(access_and_use_telemedicine)) # 798
 # Describe the dataset (10 points) Your answer should address (but not be limited to): 
 # how many variables? 
 
-prin(list(access_and_use_telemedicine.columns))
+print(list(access_and_use_telemedicine.columns))
 # ['Round','Indicator','Group', 'Subgroup', 'Sample Size', 'Response', 'Percent', 'Standard Error', 'Suppression', 'Significant 1', 'Significant 2']
 print(len(list(access_and_use_telemedicine.columns)))
 # There are 11 variables. 
