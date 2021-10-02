@@ -94,7 +94,7 @@ Download Genome(GRCh38.p13) from <https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/0
 
 ### Installation Instruction 
 <br/> 
-Install packgae 'lxml' to load the xml file. 
+Install packgae 'BioPython'. 
 
 ``` 
 py -m pip install BioPython
@@ -111,19 +111,20 @@ Step 3: Find the number of total subsequences (counting duplicates) that do not 
 
 Step 4: Using 100 hash functions from the family provided by the question and a single pass through the sequences, estimate the number of distinct 15-mers in the reference genome's chromosome 2. 
 
-1. Before testing the entire chromosome 2, I used the 1-hash function to find the minimal hash number for the first 15000000 portion of the sequence. I got the result `23262025092`. 
+1. Before testing the entire chromosome 2, I used the 1-hash function to find the minimal hash number for the first 15000000 of the sequence. I pass 1 into the function `get_ath_hash` as `first_hash` and paseed the first 15000000 of the sequence ([0:15000000]) into the function `frist_hash`. I got a hash value `23262025092` for this portion of sequence. 
 2. Then I estimated the minimal hash number on the entire list of 15-mer subsequence using the 1-hash function. Using a for loop that went through the entire list, I compared each newly found minimal hash value to the hash number for the first 15-mer subsequence to see which one was smaller, untill I got the smallest result. At the end, I got 520 as my new minimal hash number. Converted this number on a range from 0 to 1, I divided the result by 34359738367 (I printed out this hexadecimal scale number to a decimal number) and got `1.5133991837941983e-08`. After that, I calculated my minimal distinguished number by subtracting 1 from the division of 1 over my minimal hash number. Thus, I got my minimal distinguished number `66076419`(I rounded to the whole number). 
 4. Next I used a = 100 to estimate the  minmal hash number by looping through the entire list of 15-mer subsequence. My result were `80` for minimal hash value, `2.328306436606459e-09` on a scale from 0 to 1, and `429496729` as minimal distinguished number. 
 
 Step 5: Compare my estimate change for different-sized subsets of these hash functions
 
-1. I firsted decided to test the hash families on the first 15000000 portion of the sequence, which I stored in a `test` list. I created a tested function `find_min_hash_median_test` based on this test list to loop through the entire list to find out the minimal hash value. Again, I used the hash number for the first 15-mer subsequence as my initial minimal hash value. Inside the function, the outer for loop would go through a number of hash families from 1 to a, and the inner for loop would continue until finding the smallest hash value. I got `2026.5` as my minimal hash value, `5.897891242228736e-08`minimal hash value divided by scale, and `16955212` as my minimal distinguished value. 
-2. I modified the function I created in the previous step as `find_min_hash_median` that based on the entire sequence of chromosome 2, and repeated the same process above. I called the function through a different ranges of subset of 5,10, 50 and 100.  
-3. Using 5 hash functions, I got `177` as my median minimal hash value, `5.15137799099179e-09` minimal hash value divided by scale, and `194122815` for my minimal distinguished value. 
-4. Using 10 hash functions, I got `247.5` as my minimal hash value, `7.203198038251232e-09` minimal hash value divided by scale, and `138827225` for my minimal distinguished value. 
-5. Using 50 hash functions, I got `167.5` as my minimal hash value, `4.874891601644773e-09` minimal hash value divided by scale, and `205132765` for my minimal distinguished value. 
-6. Using 100 hash functions, I got `170.5` as my minimal hash value, `4.9622030930175156e-09` on a scale from 0 to 1, and `201523391` as minimal distinguished number.
-7. Using different hash functions to find the median hash value, I got quiet different results compared to use only one hash function. Generally, the hash value from only one hash function (a=100) was much larger than the medians from different subsets of hash functions. 
+1. I firsted decided to test the hash families on the first 100000 of the sequence, which I stored in a `test` list. I created a function `find_min_hash_median` that takes `a` and a `sequence` list to loop through the entire list to find out the minimal hash value. Again, I used the hash number for the first 15-mer subsequence as my initial minimal hash value. Inside the function, the outer for loop would go through a number of hash families from 1 to a, and the inner for loop would continue until finding the smallest hash value. I tested my function using 10 and 100 total hash functions and got `29120.0` and `23099.0` as my minimal median hash value, `8.47503542924751e-07` and `6.722693797396574e-07` minimal hash values divided by scale, and `1179935`and `1487498`as my minimal distinguished values. The actual distinct value for this test data set was 931157, and thus closer to the median distinct values using the median values of 10 hash functions. 
+2. I also generated fake genome sequence using `random` function that consisted of different nucleic acids `['a','c','t','g','n']`. I made a for loop to join each individual numbers into the entire sequence. I encoded the sequence in `'utf8'` to ensure the sequence can be tested in the function. Then, I subsetted `fake_subseq` for the fake sequence subsetting every 15-mer as a subsequence. I used the median of 10 and 100 hash functions to estimate the distinct values. I compared my results above with the actual distinct value 16554, which were closer to the median hash value of 100 hash functions `26092`. 
+4. After the testing above, I used the function I created in the previous step and repeated the same process as in the testing. But this time, I called the function to loop through the actural chronmosome 2 using different-sized subsets in 5,10, and 100.  
+5. Using 5 hash functions, I got `177` as my median minimal hash value, `5.15137799099179e-09` minimal hash value divided by scale, and `194122815` for my minimal distinguished value. 
+6. Using 10 hash functions, I got `247.5` as my minimal hash value, `7.203198038251232e-09` minimal hash value divided by scale, and `138827225` for my minimal distinguished value. 
+7. Using 100 hash functions, I got `170.5` as my minimal hash value, `4.9622030930175156e-09` on a scale from 0 to 1, and `201523391` for my minimal distinguished number.
+8. Using different hash functions to find the median hash value, I got quiet different results compared to using only one hash function. Generally, the hash value from only one hash function (a=100) was much larger than the medians from different subsets of hash functions. 
+9. I found the length of a `set` of all subsequences as 145003145, which was closer to the results using the median of 10 hash functions. 
 
 ### Alternative method
 
@@ -139,14 +140,16 @@ Step 1: I created a `quick_min_hash` function that passed queue, the progress of
 
 Step 2: I created a work load distribution `loaddist` function that passed the `size` of the task and `worker` as parameters. Since the size of the entire task (going through the 100 hash families) divided by my total workers would not be an interger (my computer has 8 cores 16 threads), the reminders would be evenly distributed to each worker.
 
-Step 3: I created a `find_min_hash` function would find find the minimal hash values by comparing the hash values in the min_list made above. 
+Step 3: I created a `find_min_hash` function would find the minimal hash values by comparing the hash values in the min_list made above. 
 1. Inside the function, I made two empty lists for the process of completing the task, and queque list for each worker's result. I again set a min_list that has the largest hash values. 
 2. I called `loaddist` function to evenly distribute the task of loading all 15-mer subsequences to 16 workers.
 3. I made a for loop that took the range size (range_l and range_r) as parameters. This for loop stored queuing results in a variable `q`, and used the function `Process` to target `quick_min_hash` then stored the process results in a variable `p`. After starting the multiprocessing by calling `start` function, each results from `q` and `p` would be stored in the process and queuing lists, respectively. 
 4. I made another for loop that enumerated the process list which would return the processing results. Inside this for loop, I made an inner for loop that would `get` the queueing results from each worker, who compared the new hash values with the original hash values in the min_list. 
 5. Finally, I ended process by joining results from all workers. 
-6. I found all the min hash values for the 100 hash families. My function returned the same values as those in my previous method: for 5-hash, 10-hash, 50-hash, 100-hash functions, the median minimal hash values were `177, 247.5, 167.5 and 170.5`, respectively. After dividing by scale, I had `5.15137799099179e-09, 7.203198038251232e-09, 4.874891601644773e-09 and 4.9622030930175156e-09`,`194122815, 138827225, 205132765` and `201523391` minimal distinguished numbers for each of the five hash function above. My comparison was the same as that of my previous method. 
-7. Because I got the same results using both methods, I could convince myself they both worked. 
+6. I first tested the funciton on the first 1000000 of the chromosome2 sequence. 
+7. I found all the min hash values for the 100 hash families. My function returned the same values as those in my previous method: for 5-hash, 10-hash, 100-hash functions, the median minimal hash values were `177, 247.5 and 170.5`, respectively. After dividing by scale, I had `5.15137799099179e-09, 7.203198038251232e-09 and 4.9622030930175156e-09`,`194122815, 138827225` and `201523391` minimal distinguished numbers for each of the five hash function above. My comparison was the same as that of my previous method. 
+8. To compare the distinct values results with the actual distinct values of the subsequences, I again found that using the median of 10-hash functions would return a closer value. 
+9. Because I got the same hash values results using both methods, I could convince myself they both worked. 
 
 
 ## Exercise 3
@@ -166,8 +169,6 @@ Step 2: Suggest a way of storing all the data in memory that would work
 I suggest storing the list of data inside an array instead of a list, which can substantially reduce the overhead memory. I get this idea from a blog https://pythonspeed.com/articles/python-integers-memory/. The entire size of an array is much smaller than a list when we have lots of data. However, this difference in sizes is not significant if we only have a small amount of data. (I showed an example in my script for this suggestion.)
 
 I also suggest switching to lower precision floating points to save more memories. 
-
-Alternatively, I suggest using other programming language such as C, which would minimize overhead memory when loading the data. 
 
 Step 3: Suggest a strategy for calculating the average that would not require storing all the data in memory. 
 
