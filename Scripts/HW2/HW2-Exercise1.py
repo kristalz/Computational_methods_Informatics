@@ -34,11 +34,11 @@ plt.show()
 
 # Do any of the patients share the same exact age? (2 points) How do you know? (2 points).
 
-len(age) == len(set(age)) # Reference: https://stackoverflow.com/questions/1541797/how-do-i-check-if-there-are-duplicates-in-a-flat-list
+print(len(age) == len(set(age))) # Reference: https://stackoverflow.com/questions/1541797/how-do-i-check-if-there-are-duplicates-in-a-flat-list
 
 # True
 
-Because "set" does not allow duplication. “True" means that no patients sharing the same exact age. 
+# Because "set" does not allow duplication. “True" means that no patients sharing the same exact age. 
 
 
 
@@ -57,7 +57,7 @@ plt.ylabel('Frequency')
 plt.xlabel('Gender')
 plt.show()
 
-This provider encoded gender in "string". They classified gender in categories "male", "female", and "unknown". 
+# This provider encoded gender in "string". They classified gender in categories "male", "female", and "unknown". 
 
 # Sort the patients by age and store the result in a list (use the "sorted" function with the appropriate key, 
 # or implement sort yourself by modifying one of the algorithms from the slides or in some other way). (2 points) 
@@ -86,14 +86,14 @@ print(f'The oldest patient is {oldest_patient_name}.')
 # unless that's easier than writing it out) you could find the second oldest person's name in O(n) time. (2 points).
 
 
-First I can use find max function to find the oldest patient's age. 
-Then I could loop through the entire list to find which patient's age is the largest after removing the oldest one. Thus it is O(n) time.
+# First I can use find max function to find the oldest patient's age. 
+# Then I could loop through the entire list to find which patient's age is the largest after removing the oldest one. Thus it is O(n) time.
 
 # Discuss when it might be advantageous to sort and when it is better to just use the O(n) solution. (2 points).
 
 
-It might be advantageous to sort the list when I want to quickly return the value and when the number of items in the list is relatively large (n is large).
-It is better to just use the O(n) solution when I do not want to change the orginal list and when n is small. 
+# It might be advantageous to sort the list when I want to quickly return the value and when the number of items in the list is relatively large (n is large).
+# It is better to just use the O(n) solution when I do not want to change the orginal list and when n is small. 
 
 # Recall from our discussion of the motivating problem for September 9th that we can search within a sorted list in O(log n) time via bisection. 
 # Use bisection on your sorted list (implement this yourself; don't trivialize the problem by using Python's bisect module) to identify the patient who is 41.5 years old. (2 points)
@@ -102,7 +102,7 @@ It is better to just use the O(n) solution when I do not want to change the orgi
 def binary_search(arr, val): # reference: https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7
     n = len(arr)
     left = 0
-    right = n-1
+    right = n
 
     while left < right:
         middle = (left + right)//2
@@ -121,11 +121,11 @@ print(binary_search(sorted_age, 41.5))
 # Find the patient's name 
 sorted_patient_asc = sorted(patient, key=lambda patient: patient[1])
 patient_name = sorted_patient_asc[173886][0]
-patient_name
+print(patient_name)
 # Output: John Braswell
 
 # Once you have identified the above, use arithmetic to find the number of patients who are at least 41.5 years old. (2 points)
-len(sorted_patient_asc) - 1 - 173886 + 1
+print(len(sorted_patient_asc) - 1 - 173886 + 1)
 
 # Output: 150471
 
@@ -139,7 +139,7 @@ len(sorted_patient_asc) - 1 - 173886 + 1
 def find_num_age_range(arr, low_age, high_age):
     n = len(arr)
     left = 0
-    right = n-1
+    right = n
 
     while left < right:
         middle_low = (left + right)//2
@@ -152,7 +152,7 @@ def find_num_age_range(arr, low_age, high_age):
     middle_low = left   
 
     left = 0
-    right = n-1
+    right = n
 
     while left < right:
         middle_high = (left + right)//2
@@ -172,25 +172,25 @@ def find_num_age_range(arr, low_age, high_age):
 test1= find_num_age_range(sorted_age,20,60)
 # There are 169212 patients between 20 and 60.
 count1 = len([x for x in sorted_age if x>=20 and x<60])
-count1 # 169212
+print(count1) # 169212
 # The results are the same.
 
-test2 = find_num_age_range(sorted_age, 20, 41.5)
-# There are 92087 patients between 20 and 41.5.
-count2 = len([x for x in sorted_age if x>= 20 and x < 41.5])
-count2 # 92087
+test2 = find_num_age_range(sorted_age, 20, 42)
+# There are 94319 patients between 20 and 42.
+count2 = len([x for x in sorted_age if x>= 20 and x < 42])
+print(count2) # 94319
 # The results are the same.
 
 test3 = find_num_age_range(sorted_age, 1, 40.5)
 # There are 165565 patients between 1 and 40.5.
 count3 = len([x for x in sorted_age if x>= 1 and x < 40.5])
-count3 # 165565
+print(count3) # 165565
 # The results are the same.
 
 test4 = find_num_age_range(sorted_age, 32, 64)
 # There are 134761 patients between 32 and 64.
 count4 = len([x for x in sorted_age if x>= 32 and x < 64])
-count4 # 134761
+print(count4) # 134761
 # The results are the same.
 
 # Modify the above, including possibly the data structure you're using, to provide a function that returns both the total 
@@ -222,34 +222,34 @@ test1 = find_num_age_range_new(sorted_age, sorted_age_male, 20, 60)
 # There are 169212 patients between 20 and 60.
 # There are 83542 patients between 20 and 60.
 count1 = len([x for x in sorted_age if x>= 20 and x < 60])
-count1 # 169212
+print(count1) # 169212
 count1_male = len([x for x in sorted_age_male if x>= 20 and x < 60])
-count1_male # 83542
+print(count1_male) # 83542
 # The results are the same.
 
 test2 = find_num_age_range_new(sorted_age, sorted_age_male, 30, 70)
 # There are 160608 patients between 30 and 70.
 # There are 78247 patients between 30 and 70.
 count2 = len([x for x in sorted_age if x>= 30 and x < 70])
-count2 # 160608
+print(count2) # 160608
 count2_male = len([x for x in sorted_age_male if x>= 30 and x < 70])
-count2_male # 78247
+print(count2_male) # 78247
 # The results are the same.
 
 test3 = find_num_age_range_new(sorted_age, sorted_age_male, 10, 35)
 # There are 105076 between 10 and 35.
 # There are 52797 between 10 and 35.
 count3 = len([x for x in sorted_age if x>= 10 and x < 35])
-count3 # 105076
+print(count3) # 105076
 count3_male = len([x for x in sorted_age_male if x>= 10 and x < 35])
-count3_male # 52797
+print(count3_male) # 52797
 # The results are the same.
 
-test4 = find_num_age_range(sorted_age, sorted_age_male, 5, 40)
+test4 = find_num_age_range_new(sorted_age, sorted_age_male, 5, 40)
 # There are 147090 between 5 and 40.
 # There are 74149 between 5 and 40.
 count4 = len([x for x in sorted_age if x>= 5 and x < 40])
-count4 # 147090
+print(count4) # 147090
 count4_male = len([x for x in sorted_age_male if x>= 5 and x < 40])
-count4_male # 74149
+print(count4_male) # 74149
 # The results are the same.
