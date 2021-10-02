@@ -39,8 +39,8 @@ def get_ath_hash(a):
 
 # Found the min hash for the first 15000000 subsequences
 first_hash = get_ath_hash(1)
-min_h_test= first_hash(sequence[0:15000000])
-min_h_test
+min_h1= first_hash(sequence[0:15000000])
+print(min_h1)
 # 23262025092
 
 # Test the entire list of 15-mer subsequences on a = 1
@@ -48,20 +48,20 @@ for i in range(1, len(sequence)-14):
     new_h = first_hash(sequence[i:i+15])
     if new_h < min_h1:
         min_h1 = new_h
-min_h1
+print(min_h1)
 # 520
 
 # Print out the scale
-0x07ffffffff = 34359738367
+print(0x07ffffffff) # 34359738367
 
 # Divided the min hash by scale to get the probability from 0 to 1
 min_h1_scale = min_h1/34359738367 
-min_h1_scale
+print(min_h1_scale)
 # 1.5133991837941983e-08
 
 # Find the minimal distingushed value using 
-min = (1/min_h1_scale)-1
-min
+min_1 = (1/min_h1_scale)-1
+print(min_1)
 # 66076418.93653846
 
 # Find the minimal hash value using a = 100
@@ -72,17 +72,17 @@ for i in range(1, len(sequence)-14):
     new_h = hundredth_hash(sequence[i:i+15])
     if new_h < min_h100:
         min_h100 = new_h
-min_h100
+print(min_h100)
 # 80
 
 # Divided the min hash by scale to get the probability from 0 to 1
 min_h100_scale = min_h100/34359738367 
-min_h100_scale
+print(min_h100_scale)
 # 2.328306436606459e-09
 
 # Find the minimal distingushed value 
-min = (1/min_h100_scale)-1
-min
+min_100 = (1/min_h100_scale)-1
+print(min_100)
 # 429496728.5875
 
 
@@ -109,31 +109,32 @@ def find_min_hash_median(a,seq):
 
 # Estimate min hash in a range of a = 1 to 10
 test_min_hash1 = find_min_hash_median(10,test)
-#29120.0
+print(test_min_hash1)
+# 29120.0
 
 test_min_hash_scale1 = test_min_hash1/34359738367 
-test_min_hash_scale1
+print(test_min_hash_scale1)
 # 8.47503542924751e-07
 
 min1 = (1/test_min_hash_scale1)-1
-min1
+print(min1)
 # 1179935.0702953297
 
 # Estimate min hash in a range of a = 1 to 100
 test_min_hash2 = find_min_hash_median(100,test)
-test_min_hash2
+print(test_min_hash2)
 # 23099.0
 
 test_min_hash_scale2 = test_min_hash2/34359738367 
-test_min_hash_scale2
+print(test_min_hash_scale2)
 # 6.722693797396574e-07
 
 min2 = (1/test_min_hash_scale2)-1
-min2
+print(min2)
 # 1487497.9552361574
 
 test_sub=[test[i:i+15] for i in range(len(test)-14)]
-len(set(test_sub))
+print(len(set(test_sub)))
 # 931157
 
 # From the results above, we can see that from a=1-10 is closer to the true distinct values of the subsequence in the test dataset. 
@@ -146,7 +147,7 @@ import random
 nucleic_acid_choices = ['a','c','t','g','n']
 fake_seq_list= []
 for i in range(100000):
-    fake_seq_list.append(random.choice(nucleic_acid))
+    fake_seq_list.append(random.choice(nucleic_acid_choices))
     # Joining each individual numbers into the entire sequence 
     fake_seq = "".join(fake_seq_list)
 
@@ -158,78 +159,80 @@ fake_subseq=[fake_seq[i:i+15] for i in range(len(fake_seq)-14)]
 # Find the minimal hash value on the fake dataset
 
 fake_min_h_10 = find_min_hash_median(10,fake_seq)
-fake_min_h_10 # 1207660.5
+print(fake_min_h_10) # 1207660.5
 
 fake_min_h_10_scale = fake_min_h_10/34359738367 
-fake_min_h_10_scale # 3.5147546442317184e-05
+print(fake_min_h_10_scale) # 3.5147546442317184e-05
 
 fake_min_10 = (1/fake_min_h_10_scale)-1
-fake_min_10 # 28450.488118556495
+print(fake_min_10) # 28450.488118556495
 
 
 fake_min_h_100 = find_min_hash_median(100,fake_seq)
-fake_min_h_100 # 1316809.0
+print(fake_min_h_100) # 1316809.0
 
 fake_min_h_100_scale = fake_min_h_100/34359738367 
-fake_min_h_100_scale # 3.832418588101643e-05
+print(fake_min_h_100_scale) # 3.832418588101643e-05
 
 fake_min_100 = (1/fake_min_h_100_scale)-1
-fake_min_100 # 26092.18311691369
+print(fake_min_100) # 26092.18311691369
 
-len(set(fake_subseq))
+print(len(set(fake_subseq)))
 # 16554
 
 # From the results above, we can see that from a=1-100 is closer to the true distinct values of the subsequence in the fake dataset. 
+
+
 
 # Find the minimal hash value on the entire sequence 
 
 
 # Estimate min hash in a range of a = 1 to 5:       
 min_h_5 = find_min_hash_median(5,sequence)
-min_h_5 
+print(min_h_5)
 # 177
 
 # Divided the min hash by scale to get the probability from 0 to 1
 min_h_5_scale = min_h_5/34359738367 
-min_h_5_scale
+print(min_h_5_scale)
 # 5.15137799099179e-09
 
 # Find the minimal distingushed value
 min5 = (1/min_h_5_scale)-1
-min5
+print(min5)
 # 194122814.63276836
 
 # Estimate min hash in a range of a = 1 to 10: 
 min_h_10 = find_min_hash_median(10,sequence)
-min_h_10 
+print(min_h_10)
 # 247.5
 
 # Divided the min hash by scale to get the probability from 0 to 1
 min_h_10_scale = min_h_10/34359738367 
-min_h_10_scale 
+print(min_h_10_scale)
 # 7.203198038251232e-09
 
 # Find the minimal distingushed value 
 min10 = (1/min_h_10_scale)-1
-min10
+print(min10)
 # 138827224.72525254
 
 # Estimate min hash in a range of a = 1 to 100
 min_h_100 = find_min_hash_median(100,sequence)
-min_h_100 # 170.5
+print(min_h_100) # 170.5
 
 # Divided the min hash by scale to get the probability from 0 to 100
 min_h_100_scale = min_h_100/34359738367 
-min_h_100_scale # 4.9622030930175156e-09
+print(min_h_100_scale) # 4.9622030930175156e-09
 
 # Find the minimal distingushed value 
 min100 = (1/min_h_100_scale)-1
-min100 # 201523391.1818182
+print(min100) # 201523391.1818182
 
 # Check the result of the function 
 
 subseq=[sequence[i:i+15] for i in range(len(sequence)-14)]
-len(set(subseq))
+print(len(set(subseq)))
 # 145003145
 
 # From the results above, we can see that from a=1-10 is closer to the true distinct values of the subsequence. 
