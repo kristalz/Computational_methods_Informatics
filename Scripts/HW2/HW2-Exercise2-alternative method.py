@@ -46,13 +46,13 @@ def loaddist(size,worker,start=0):
         i+=size
     return result
 
-def find_min_hash(a):
+def find_min_hash(a,seq):
     min_list=[scale]*a
     proc_list=[]
     queue_list=[]
     
     # Evenly distribute the task of loading all 15-mer subsequences to 16 workers.
-    range_list=loaddist(len(sequence)-14,16)
+    range_list=loaddist(len(seq)-14,16)
     print(range_list)
     
     # Store the queuing process in a progress bar.
@@ -79,8 +79,43 @@ def find_min_hash(a):
         p.join()
     return min_list
 
-# Find min hash for all 100 families:
-min_h = find_min_hash(100)
+test = sequence[0:1000000]
+
+# Find min hash for all 100 families in the first 100000 sequence:
+min_h_test = find_min_hash(100,test)
+print(min_h_test)
+# [(0, 62500), (62500, 125000), (125000, 187499), (187499, 249998), (249998, 312497), (312497, 374996), 
+# (374996, 437495), (437495, 499994), (499994, 562493), (562493, 624992), (624992, 687491), (687491, 749990), 
+# (749990, 812489), (812489, 874988), (874988, 937487), (937487, 999986)]
+# [37244, 26109, 20952, 36744, 42444, 15290, 31901, 22983, 26339, 72141, 2028, 24467, 36206, 58686, 50169, 25515, 
+# 12867, 42114, 1559, 3799, 1471, 54522, 46895, 33867, 3677, 73007, 43458, 27537, 4859, 3217, 10678, 51030, 111119, 
+# 35998, 14712, 123780, 9272, 19531, 62113, 7598, 70540, 2529, 35844, 77322, 4051, 93790, 23204, 7648, 47349, 49364, 
+# 10537, 64677, 4202, 168448, 6641, 16769, 14479, 76560, 89466, 11397, 2187, 21356, 4413, 13509, 12072, 4256, 13087, 
+# 1971, 28256, 29424, 93507, 31653, 71582, 9634, 11909, 27275, 8949, 134359, 8762, 15196, 43556, 9337, 40325, 5058, 508, 
+# 38921, 15275, 12835, 9440, 22994, 22486, 90289, 1612, 19513, 39341, 15296, 80692, 29681, 27356, 5305]
+
+min_h_test_median = statistics.median(min_h_test)
+min_h_test_median  # 23099.0
+min_h_test_median_scale = min_h_test_median/34359738367 
+min_h_test_median_scale # 6.722693797396574e-07
+min_test = (1/min_h_test_median_scale)-1
+min_test # 1487497.9552361574
+
+# Find the median for the first 10
+min_h10_test_median = statistics.median(min_h_test[:10])
+min_h10_test_median # 29120.0
+min_h10_test_median_scale = min_h10_test_median/34359738367 
+min_h10_test_median_scale # 8.47503542924751e-07
+min_10_test = (1/min_h10_test_median_scale)-1
+min_10_test # 1179935.0702953297
+
+test_sub=[test[i:i+15] for i in range(len(test)-14)]
+len(set(test_sub))
+# 931157 
+
+
+# Find min hash for all 100 families in the entire sequence:
+min_h = find_min_hash(100,sequence)
 print(min_h)
 
 # [(0, 15137095), (15137095, 30274190), (30274190, 45411285), (45411285, 60548380), 
@@ -94,6 +129,7 @@ print(min_h)
 
 min_100_median = statistics.median(min_h)
 min_100_median # 170.5
+
 min_100_median_scale = min_100_median/34359738367 
 min_100_median_scale # 4.9622030930175156e-09
 min_100 = (1/min_100_median_scale)-1
@@ -117,11 +153,8 @@ min_10_median_scale # 7.203198038251232e-09
 min_10 = (1/min_10_median_scale)-1
 min_10 # 138827224.72525254
 
-min_50_hash = min_h[:50]
-min_50_median = statistics.median(min_50_hash)
-min_50_median # 167.5
+# Check the result of the function 
 
-min_50_median_scale = min_50_median/34359738367 
-min_50_median_scale # 4.874891601644773e-09
-min_50 = (1/min_50_median_scale)-1
-min_50 # 205132765.37014925
+subseq=[sequence[i:i+15] for i in range(len(sequence)-14)]
+len(set(subseq))
+# 145003145
