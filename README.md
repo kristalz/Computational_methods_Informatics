@@ -159,10 +159,11 @@ Step 3: I created a `find_min_hash` function would find the minimal hash values 
 
 Step 1: Explain what went wrong in "my friend's" code.
 
-1.  First, it is probably that "my friend" has a 32-bit operating system. All 32-bit operating systems have a 4GB RAM limit. Therefore, it is very likely that "my friend's" operating system used all the memories when loading the file.  
-2. Second, other than the memory usage in storing data, loading data in Python also consumes overhead memory about the data structure, and related procedural information of loading the data into the list . When loading the data into list, Python also creates pointers that record the location of where each element locates in the computer. These pointers consumer extra memory as reference memory.
-3. Third, since the original "weights" information are string in the data. They are convereted to float objects, which consume more memories than float numbers. In addition, the file consists of high-precision weights of exactly 500 milion people, if one weight consumes 8 byte, 500 million x 8 byte is equal to 4 GB. 
-4. Counting all the memories discussed above (the memories of loop through the 500 million high precision weights, the overhead memory and the reference memory) the total memories consumed would be likely over 8 GB.
+1.  First, it is probably that "my friend" has a 32-bit operating system. All 32-bit operating systems have a 4 GB RAM limit. Therefore, it is very likely that "my friend's" operating system used all the memories when loading the file.  
+2. Second, the file consists of high-precision weights of exactly 500 milion people, if one weight consumes 8 bytes, 500 million x 8 byte is equal to 4 GB. Since the original "weights" information are string in the data. They are convereted to float objects, which consume more memories than float numbers. 
+3. In addition, other than the memory usage in storing data, loading data in Python also consumes overhead memory about the data structure, and related procedural information of loading the data into the list . There would be 16 bytes to describe the the metadata for each float. Moreover, list would also consume extra 56 bytes to describe the metadata for itself. Therefore, 4 GB (to store the 500 million float numbers above)+56 bytes+16 bytes*500 miliion ≈ 12 GB! No wonder "my friend"'s operating system would run out of memories. 
+5. Finally, when loading the data into list, Python also creates pointers that record the location of where each element locates in the computer. These pointers consume extra memories as reference memory. 
+6. Thus, counting all these memory usages discussed above, the total memories consumed would be likely two times over 8 GB, "my friend" RAM limit.
 
 Plese see my script for an illustration of an example that showing the affects of extra memories that Python created when loading a file. 
 
