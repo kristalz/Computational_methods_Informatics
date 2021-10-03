@@ -95,22 +95,22 @@ print(min_h_test)
 # 38921, 15275, 12835, 9440, 22994, 22486, 90289, 1612, 19513, 39341, 15296, 80692, 29681, 27356, 5305]
 
 min_h_test_median = statistics.median(min_h_test)
-min_h_test_median  # 23099.0
+print(min_h_test_median)  # 23099.0
 min_h_test_median_scale = min_h_test_median/34359738367 
-min_h_test_median_scale # 6.722693797396574e-07
+print(min_h_test_median_scale) # 6.722693797396574e-07
 min_test = (1/min_h_test_median_scale)-1
-min_test # 1487497.9552361574
+print(min_test) # 1487497.9552361574
 
 # Find the median for the first 10
 min_h10_test_median = statistics.median(min_h_test[:10])
-min_h10_test_median # 29120.0
+print(min_h10_test_median) # 29120.0
 min_h10_test_median_scale = min_h10_test_median/34359738367 
-min_h10_test_median_scale # 8.47503542924751e-07
+print(min_h10_test_median_scale) # 8.47503542924751e-07
 min_10_test = (1/min_h10_test_median_scale)-1
-min_10_test # 1179935.0702953297
+print(min_10_test) # 1179935.0702953297
 
 test_sub=[test[i:i+15] for i in range(len(test)-14)]
-len(set(test_sub))
+print(len(set(test_sub)))
 # 931157 
 
 
@@ -128,33 +128,33 @@ print(min_h)
 # 836, 56, 459, 453, 274, 170, 243, 116, 241, 778, 340, 171, 58, 168, 105, 433, 40, 39, 4, 134, 180, 408, 494, 76, 368, 129, 319, 80]
 
 min_100_median = statistics.median(min_h)
-min_100_median # 170.5
+print(min_100_median) # 170.5
 
 min_100_median_scale = min_100_median/34359738367 
-min_100_median_scale # 4.9622030930175156e-09
+print(min_100_median_scale) # 4.9622030930175156e-09
 min_100 = (1/min_100_median_scale)-1
 min_100 # 201523391.1818182
 
 min_5_hash = min_h[:5]
 min_5_median = statistics.median(min_5_hash)
-min_5_median # 177
+print(min_5_median) # 177
 
 min_5_median_scale = min_5_median/34359738367 
-min_5_median_scale # 5.15137799099179e-09
+print(min_5_median_scale) # 5.15137799099179e-09
 min_5 = (1/min_5_median_scale)-1
-min_5 # 194122814.63276836
+print(min_5) # 194122814.63276836
 
 min_10_hash = min_h[:10]
 min_10_median = statistics.median(min_10_hash)
-min_10_median # 247.5
+print(min_10_median) # 247.5
 
 min_10_median_scale = min_10_median/34359738367 
-min_10_median_scale # 7.203198038251232e-09
+print(min_10_median_scale) # 7.203198038251232e-09
 min_10 = (1/min_10_median_scale)-1
-min_10 # 138827224.72525254
+print(min_10) # 138827224.72525254
 
 # Check the result of the function 
 
 subseq=[sequence[i:i+15] for i in range(len(sequence)-14)]
-len(set(subseq))
+print(len(set(subseq)))
 # 145003145
