@@ -193,16 +193,17 @@ print(len(set(test_sub)))
 # Test on some fake dataset
 
 import random
+random.seed(1) 
 
 # Randomly generate different nucleic acids to compose a fake chromosome sequence 
 nucleic_acid_choices = ['a','c','t','g','n']
 fake_seq_list= []
-for i in range(100000):
+for i in range(1000000):
     fake_seq_list.append(random.choice(nucleic_acid_choices))
     # Joining each individual numbers into the entire sequence 
     fake_seq = "".join(fake_seq_list)
 
-fake_seq = str(chromosome.seq).lower().encode('utf8')
+fake_seq = fake_seq.encode('utf8')
 
 # Create a fake_subseq for the fake sequence subsetting every 15-mer as a subsequence
 fake_subseq=[fake_seq[i:i+15] for i in range(len(fake_seq)-14)]
@@ -216,7 +217,7 @@ fake_min_h_1_scale = fake_min_h_1/34359738367
 print(fake_min_h_1_scale) # 6.058142753494267e-05
 
 fake_min_1 = (1/fake_min_h_1_scale)-1
-print(fake_min_1) # 16505.709080488596
+print(fake_min_1) # 3168547.3554961267
 
 fake_min_h_10 = find_min_hash_median(10,fake_seq)
 print(fake_min_h_10) # 1207660.5
@@ -225,7 +226,7 @@ fake_min_h_10_scale = fake_min_h_10/34359738367
 print(fake_min_h_10_scale) # 3.5147546442317184e-05
 
 fake_min_10 = (1/fake_min_h_10_scale)-1
-print(fake_min_10) # 28450.488118556495
+print(fake_min_10) # 1049952.8080061115
 
 fake_min_h_100 = find_min_hash_median(100,fake_seq)
 print(fake_min_h_100) # 1316809.0
@@ -234,12 +235,12 @@ fake_min_h_100_scale = fake_min_h_100/34359738367
 print(fake_min_h_100_scale) # 3.832418588101643e-05
 
 fake_min_100 = (1/fake_min_h_100_scale)-1
-print(fake_min_100) # 26092.18311691369
+print(fake_min_100) # 1002734.6086791572
 
 print(len(set(fake_subseq)))
-# 16554
+# 999967
 
-# From the results above, we can see that from a=1 is closest to the true distinct values of the subsequence in the fake dataset. 
+# From the results above, we can see that from a=100 is closest to the true distinct values of the subsequence in the fake dataset. 
 
 
 
