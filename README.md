@@ -105,14 +105,21 @@ py -m pip install BioPython
 
 Step 1: Create a fake data set to estimate the distinct values. 
 
-1. I first generated a fake genome sequence using `random` function that consisted of 10000 different nucleic acids `['a','c','t','g','n']`. I set a `random.seed(1)` for reproducible randomness. I made a for loop to join each individual numbers into the entire sequence. I encoded the sequence in `'utf8'` to ensure the sequence can be tested in the function. Then, I subsetted `fake_subseq` for the fake sequence into each 15-mer as a subsequence. I found out there were 9986 true distinct sequences by using `len` function over the `set` of the fake subsequences(`set` does not contain duplicated elements). 
+1. I first generated two fake genome sequence using `random` function that consisted of 100000 and 10000 different nucleic acids `['a','c','t','g','n']`. I set a `random.seed(1)` for reproducible randomness. I made a for loop to join each individual numbers into the entire sequence. I encoded the sequence in `'utf8'` to ensure the sequence can be tested in the function. Then, I subsetted `fake_subseq` for the fake sequence into each 15-mer as a subsequence. I found out there were `99986` and `9986` true distinct sequences by using `len` function over the `set` of the fake subsequences(`set` does not contain duplicated elements) in 100000 and 10000 based fake sequences, respectively. 
 2. I made a `estimate_distinct_values` function that passed `a` and a sequence `seq` as parameters. Inside the function, I created an empty list that would later store the minimal hash values. I made a for loop that went through the entire sequence in a range of `a`, compared each newly found minimal hash value to the hash number for the first 15-mer subsequence to see which one was smaller, and stored the smallest results after divided by the scale. I converted the list of hash numbers to an array because arrays would save lots of memories. 
 3. After that, I used four different strategies to estimate the distinct values: 1) Calculate the average min hash values first then estimate the distinct value; 2) calculate the median min hash values first then estimate the distinct value; 3) calculate the distinct values for each hash first then take the average of them; 4) calculate the distinct values for each hash first then take the median of them. I returned the result for each approach at the end of my function. 
-4. I pass `a=100` for my function created above because it would printed out all hash values at once. Then I plot my estimate results for the fake sequence.
+4. I pass `a=100` for my function created above because it would printed out all hash values at once. Then I plot my estimate results for both fake sequences.
 
-![estimate_test_results](https://github.com/kristalz/BIS634/blob/main/Images/estimate_test_results.jpg)
+This is the results for 100000-based fake sequence:
 
-5. According to the results above, using the average of all minimal hash numbers to estimate the distinct values wass closest to the actual distinct value `9986` (blue line in the plot), whereas calculating the distinct values first then take the average was furthest away from the true value(green line). While all four lines were quite vasillating using small sized hash functions, only the green line (calculate the distinct values for each hash first then take the average of them) did not converage over about 25 hash functions. Note that the yellow line and red line almost overlapped, inferring that the estimate results were about the same either calculate the median first or after to estimate the distinct values. Therefore, according to this result, I decided to use the first stratege(calculate the average min hash values first then estimate the distinct value) to estimate the distinct 15-mer in chromosome2. 
+![estimate_test1_results](https://github.com/kristalz/BIS634/blob/main/Images/estimate_test1_results.jpg)
+
+
+This is the results for 10000-based fake sequence:
+
+![estimate_test2_results](https://github.com/kristalz/BIS634/blob/main/Images/estimate_test2_results.jpg)
+
+5. According to the results above in both 100000 and 10000 based fake sequences, using the average of all minimal hash numbers to estimate the distinct values wass closest to the actual distinct values (blue lines ), whereas calculating the distinct values first then take the average was furthest away from the true value (green lines). While all four lines were quite vasillating using small sized hash functions, only the green line (calculate the distinct values for each hash first then take the average of them) did not converage over about 25 hash functions. Note that the yellow lines and red lines almost overlapped, inferring that the estimate results were about the same either calculate the median first or after to estimate the distinct values. Therefore, I decided to use the first stratege (calculate the average min hash values first then estimate the distinct value) to estimate the distinct 15-mer in chromosome2. 
 
 Step 2: Find all 15-mer subsequences and estimate the distinct values of subsequences in chromosome2. 
 
