@@ -209,7 +209,7 @@ In this way, we do not need to store any data but still got the total_weight and
 
 I identified a healthcare survey dataset rom CDC.gov <https:////www.cdc.gov/nchs/rands/data.htm> that include healthcare conditions, past medical history, lifestyle, and more. This dataset came from the Research and Development Survey (RANDS), a platform that conducts commercial survey panels for research at the National Center for Health Statistics (NCHS). RANDS began this round 3 survey on April 11, 2019 and ended on April 24, 2019, inviting 4,255 of AmeriSpeak® panel members to complete the RANDS web questionnaire. 
 
-I downloaded the csv data and stored it as a panda dataframe in `data`. I examined the head of the dataframe. 
+I downloaded the csv data and stored it as a panda dataframe in `data` and examined the head of `data`. 
 ![HW2_exercise4_data](https://github.com/kristalz/BIS634/blob/main/Images/HW2_exercise4_data.jpg)
 
 This dataset was coded alphabetically that each columne refer to the question in the survey questionnaire. There are 415 variables (columns) and 2,646 observations (rows) in the data Each questions (coded in the variable names) provides 2-5 answer choices, while others like ages . I need to use the codebook reference <https://www.cdc.gov/nchs/rands/files/RANDS3_codebook.pdfuse> to look up meanings of variables inside the dataset. For example, the first one (`AASMEV`: Have you ever been told by a doctor or other health professional that you had asthma?) is a YES/NO answer.
