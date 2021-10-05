@@ -3,71 +3,16 @@
 
 import pandas as pd 
 
-access_and_use_telemedicine = pd.read_csv('Access_and_Use_of_Telemedicine_During_COVID-19.csv') 
-# Downloaded from https://healthdata.gov/dataset/Access-and-Use-of-Telemedicine-During-COVID-19/c835-etjt. 
-access_and_use_telemedicine.head()
-print(len(access_and_use_telemedicine)) # 798
+data = pd.read_csv('RANDS3.csv') 
+# Downloaded from https:////www.cdc.gov/nchs/rands/data.htm. 
+data.head()
+print(len(data)) # 2646
 
 # Describe the dataset (10 points) Your answer should address (but not be limited to): 
 # how many variables? 
 
-print(list(access_and_use_telemedicine.columns))
-# ['Round','Indicator','Group', 'Subgroup', 'Sample Size', 'Response', 'Percent', 'Standard Error', 'Suppression', 'Significant 1', 'Significant 2']
-print(len(list(access_and_use_telemedicine.columns)))
-# There are 11 variables. 
-
-# Are the key variables explicitly specified or are they things you would have to derive (e.g. by inferring from text)? 
-
-# The variables inside the dataset are straight-forward and explicily specified. "Groups" represent age, race, sex, education level, urbanization, and selected chronic conditions in the study. 
-# "Subgroups" represent the subctegories within each group. For example, "18-44 years" is a subrgoup for age group. 
-# For different purposes or the questions I will be interested in my final project, I might divide or group the age group into different age ranges. 
-# For instance, if I am interested in knowing how compare middle-age people (before 65) and the elderly using telemedicine during COVID, I will group people from "18-44" and "44-64" together for analysis. 
-
-# The binary responses 0 and 1 under "Significance 1" and "Significance 2" indicates the estimated significance testing of difference  at the 5% significance level from Round 1 and Round 2, respetively. 
-# I need to look up the description for the dataset (https://data.cdc.gov/NCHS/Access-and-Use-of-Telemedicine-During-COVID-19/8xy9-ubqz) to interpret thses responses. 
-
-# Are any of the variables exactly derivable from other variables? (i.e. are any of them redundant?) 
-
-# There might be overlapped numbers of people into different subgroups. For example, there might be intersection of people who are Hispanic and aged between "18-44 years". 
-
-# Are there any variables that could in principle be statistically predicted from other variables? How many rows/data points are there? 
-
-# All groups (i.e., age, race, sex, education level, urbanization, and selected chronic conditions) can serve as predictors for the variables "Response" of using telemedicine during COVID. 
-
-# Age: 
-age = len(access_and_use_telemedicine[access_and_use_telemedicine['Group'] == 'Age group'])
-print(f"There are {age} rows in age group")
-# There are 126 rows in age group
-
-# Race:
-race = len(access_and_use_telemedicine[access_and_use_telemedicine['Group'] == 'Race/Hispanic origin'])
-print(f"There are {race} rows in race group")
-# There are 168 rows in race group
-
-# Sex:
-sex = len(access_and_use_telemedicine[access_and_use_telemedicine['Group'] == 'Sex'])
-print(f"There are {sex} rows in sex group")
-# There are 84 rows in sex group
-
-# Education level:
-education = len(access_and_use_telemedicine[access_and_use_telemedicine['Group'] == 'Education'])
-print(f"There are {education} rows in education level group")
-# There are 126 rows in education level group
-
-# Urbanization:
-urbanization = len(access_and_use_telemedicine[access_and_use_telemedicine['Group'] == 'Urbanization'])
-print(f"There are {urbanization} rows in urbanization level group")
-# There are 84 rows in urbanization level group
-
-# Selected chronic conditions:
-chronic_con = len(access_and_use_telemedicine[access_and_use_telemedicine['Group'] == 'Chronic conditions'])
-print(f"There are {chronic_con} rows in selected chronic conditions group")
-# There are 168 rows in selected chronic conditions group
-
-# Is the data in a standard format? If not, how could you convert it to a standard format?
-
-# The data is in a standard format because each element is in their atomic form in a separate cell. For instance, the number of people responding using telemedicine in "18-44 years" are separated from those who age in "65 years and over". 
-
-# Describe the terms of use and identify any key restrictions (e.g. do you have to officially apply to get access to the data? Are there certain types of analyses you can't do?)
-
-# This dataset is opened to public use so I do not haave to officially apply to get permission to download the data. 
+print(list(data.columns))
+# ['AASMEV', 'AASSMERYR', 'AASSMYR', 'AASSTILL', 'ACINERV', 'ACIRSTLS_A', 'ACIRSTLS_B', 'ACIRSTLS_C', 'ACISAD', 'ACIWTHLS', 'AGE', 'ANX_1', 'ANX_2', 'ANX_3', 'A_CHPAIN6M', 'A_ECIGEV_A', 'A_PAINLMT6', 'A_PHQA', 'A_PHQB', 'A_PHQC', 'A_PHQD', 'A_PHQE', 'A_PHQF', 'A_PHQG', 'A_PHQH', 'A_PHQIMP', 'A_PHSTAT', 'A_PROBE33_1', 'A_PROBE33_2', 'A_PROBE33_3', 'A_PROBE33_4', 'A_PROBE33_5', 'B_ECIGEV_A', 'B_GADA', 'B_GADB', 'B_GADC', 'B_GADD', 'B_GADE', 'B_GADF', 'B_GADG', 'B_GADIMP', 'B_PAINLMT3', 'B_PAIN_2', 'B_PHSTAT', 'B_PROBE34_1', 'B_PROBE34_2', 'B_PROBE34_3', 'B_PROBE34_4', 'B_PROBE34_5', 'CHLEV', 'CHLMDNW2', 'CHLYR', 'CaseID', 'DEP_1', 'DEP_2', 'DEP_3', 'DIBAGE_A', 'DIBEV_A', 'DIBINS_A', 'DIBPILL_A', 'DIBTYPE_A', 'DOV_OPIOID', 'EDUC', 'EMPLOY', 'GENDER', 'GESDIB_A', 'HOME_TYPE', 'HOUSING', 'HYPDIF_A', 'HYPEV', 'HYPMED2', 'HYPYR', 'INCOME', 'INJURY1', 'INJURY12', 'INJURY13', 'INJURY2', 'INJURY3', 'INJURY4', 'INJURY5', 'INJURY6_A', 'INJURY6_B', 'INJURY6_C', 'INJURY6_D', 'INJURY6_E', 'INJURY6_F', 'INTERNET', 'MARITAL', 'MODLNGNO_NUM', 'MODLNGNO_UNIT', 'MODNO_NUM', 'MODNO_UNIT', 'NEWLUNG', 'OPIOID1', 'OPIOID1_2', 'OPIOID2_1', 'OPIOID2_10', 'OPIOID2_11', 'OPIOID2_12', 'OPIOID2_13', 'OPIOID2_14', 'OPIOID2_15', 'OPIOID2_16', 'OPIOID2_17', 'OPIOID2_18', 'OPIOID2_19', 'OPIOID2_2', 'OPIOID2_20', 'OPIOID2_21', 'OPIOID2_22', 'OPIOID2_23', 'OPIOID2_24', 'OPIOID2_25', 'OPIOID2_26', 'OPIOID2_27', 'OPIOID2_28', 'OPIOID2_29', 'OPIOID2_2_1', 'OPIOID2_2_10', 'OPIOID2_2_11', 'OPIOID2_2_12', 'OPIOID2_2_13', 'OPIOID2_2_14', 'OPIOID2_2_15', 'OPIOID2_2_16', 'OPIOID2_2_17', 'OPIOID2_2_18', 'OPIOID2_2_19', 'OPIOID2_2_2', 'OPIOID2_2_20', 'OPIOID2_2_21', 'OPIOID2_2_22', 'OPIOID2_2_23', 'OPIOID2_2_24', 'OPIOID2_2_25', 'OPIOID2_2_26', 'OPIOID2_2_27', 'OPIOID2_2_28', 'OPIOID2_2_29', 'OPIOID2_2_3', 'OPIOID2_2_30', 'OPIOID2_2_31', 'OPIOID2_2_32', 'OPIOID2_2_33', 'OPIOID2_2_34', 'OPIOID2_2_35', 'OPIOID2_2_36', 'OPIOID2_2_4', 'OPIOID2_2_5', 'OPIOID2_2_6', 'OPIOID2_2_7', 'OPIOID2_2_8', 'OPIOID2_2_9', 'OPIOID2_2_NONE_FIRST', 'OPIOID2_2_NONE_FOURTH', 
+# 'OPIOID2_2_NONE_SECOND', 'OPIOID2_2_NONE_THIRD', 'OPIOID2_3', 'OPIOID2_30', 'OPIOID2_31', 'OPIOID2_32', 'OPIOID2_33', 'OPIOID2_34', 'OPIOID2_35', 'OPIOID2_36', 'OPIOID2_4', 'OPIOID2_5...]
+len(list(data.columns))
+# There are 415 variables. 
