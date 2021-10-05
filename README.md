@@ -149,16 +149,20 @@ Step 3: I created a `find_min_hash` function would find the minimal hash values 
 3. I made a for loop that took the range size (range_l and range_r) as parameters. This for loop stored queuing results in a variable `q`, and used the function `Process` to target `quick_min_hash` then stored the process results in a variable `p`. After starting the multiprocessing by calling `start` function, each results from `q` and `p` would be stored in the process and queuing lists, respectively. 
 4. I made another for loop that enumerated the process list which would return the processing results. Inside this for loop, I made an inner for loop that would `get` the queueing results from each worker, who compared the new hash values with the original hash values in the min_list. I converted the min_list to an array. 
 5. At the end, I ended process by joining results from all workers. I calculated the averages of scaled min hash in different sized hash functions, then estimated the distinct values. 
-6. I first tested the funciton on the first 1000000 of the chromosome2 sequence. My function returned a list of all hash values. 
+6. I first tested the funciton on the first 1000000 portions of chromosome2 sequence. My function returned a list of all hash values. 
+
+![estimate_results_test1](https://github.com/kristalz/BIS634/blob/main/Images/estimate_results_test1.jpg)
+
+7. Then Itested the function on the first 100000 portions of chromosome2 sequence. 
 
 ![estimate_results_test2](https://github.com/kristalz/BIS634/blob/main/Images/estimate_results_test2.jpg)
 
-7. According to the results, I found that For the first hash, first 10 hash, and all 100 hash functions, the estimated values were `922556.683573193, 1034472.843418727, and 1048865.6405058529`, respectively. Although the result using the first hash function were closet to the actual value (`931157`), the results did not converge until over 30 hash functions. Nevertheless, the estimated outcomes were not as great as those in my fake sequence test. 
-8. Then, I used the function to find all the min hash values for the 100 hash families. For the first hash, first 10 hash, and all 100 hash functions, the estimated values were `6.60764189e+07, 1.33539596e+08 and 1.33799603e+08`. 
+8. According to the results, I found that for the first hash, first 10 hash, and all 100 hash functions, the estimated values were `922556.683573193, 1034472.843418727, and 1048865.6405058529` for the first 1000000 and `83027.71125458396, 127919.15862443828, 65453.663569801836` for the first 100000 portions of chromosome2, respectively. Although in both cases using the first hash function were closet to the actual value (`931157` and `87191`), the results did not converge until over 30 hash functions. Nevertheless, the estimated outcomes were not as great as those in my fake sequence test, especially for the first 1000000 portions of chromosome2 sequence (the estimated outputs were quite different through out the entire hash functions). 
+9. Then, I used the function to find all the min hash values for the 100 hash families. For the first hash, first 10 hash, and all 100 hash functions, the estimated values were `6.60764189e+07, 1.33539596e+08 and 1.33799603e+08`. 
 
 ![estimate_results_seq2](https://github.com/kristalz/BIS634/blob/main/Images/estimate_results_seq2.jpg)
 
-10. According to the plot above, my estimated outcomes for the entire sequence were better than the first 1mi portion. The estimated values converged over 20 hash functions to about 1.3e+08. Thus, the estimated values were closer to the actual value 1.4e+08 as the sizes of the hash functions became larger. This observation was the same as that in my tested fake sequence and chomosome2 in previous method. 
+10. According to the plot above, my estimated outcomes for the entire sequence were better than the first 1000000 portions of chromosome2. The estimated values converged over 20 hash functions to about 1.3e+08. Thus, the estimated values were closer to the actual value 1.4e+08 as the sizes of the hash functions became larger. This observation was the same as that in my tested fake sequence and chomosome2 in previous method. 
 
 
 ## Exercise 3
