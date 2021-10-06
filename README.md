@@ -180,13 +180,14 @@ Step 1: Explain what went wrong in "my friend's" code.
 5. Finally, when loading the data into list, Python also creates pointers that record the location of where each element locates in the computer. These pointers consume extra memories as reference memory. 
 6. Thus, counting all these memory usages discussed above, the total memories consumed would be likely two times over 8 GB, "my friend" RAM limit.
 
-Plese see my script for an illustration of an example that showing the affects of extra memories that Python created when loading a file. 
+Plese see my script for an illustration of an example with a fake text file 'weight.txt' to show the effets of extra memories that Python created when loading a file.
 
 Step 2: Suggest a way of storing all the data in memory that would work
 
-I suggest storing the list of data inside an array instead of a list, which can substantially reduce the overhead memory. I get this idea from a blog https://pythonspeed.com/articles/python-integers-memory/. The entire size of an array is much smaller than a list when we have lots of data. However, this difference in sizes is not significant if we only have a small amount of data. (I showed an example in my script for this suggestion.)
+I suggest storing the list of data inside a numpy array instead of a list, which can substantially reduce the overhead memory. I get this idea from a blog https://pythonspeed.com/articles/python-integers-memory/. Storing a float into an array only requires 8 bytes, while storing into a list needs 16 bytes. The entire size of an array is much smaller than a list when we have lots of data. However, this difference in sizes is not significant if we only have a small amount of data. (I showed an example in my script for this suggestion.)
 
-I also suggest switching to lower precision floating points to save more memories. 
+My second suggestion is to use generator to store the float instead of using a list. 
+
 
 Step 3: Suggest a strategy for calculating the average that would not require storing all the data in memory. 
 
