@@ -184,13 +184,9 @@ Plese see my script for an illustration of an example with a fake text file 'wei
 
 Step 2: Suggest a way of storing all the data in memory that would work
 
-I suggest storing the list of data inside a numpy array instead of a list, which can substantially reduce the overhead memory. I get this idea from a blog https://pythonspeed.com/articles/python-integers-memory/. Storing a float into an array only requires 8 bytes, while storing into a list needs 16 bytes. The entire size of an array is much smaller than a list when we have lots of data. However, this difference in sizes is not significant if we only have a small amount of data. (I showed an example in my script for this suggestion.)
-
-My second suggestion is to use generator to store the float instead of using a list. 
-
+I suggest storing the list of data inside a numpy array instead of a list, which can substantially reduce the overhead memory. I get this idea from a blog https://pythonspeed.com/articles/python-integers-memory/. Storing a float into an array only requires 8 bytes, while storing into a list needs 16 bytes. The entire size of an array is much smaller than a list when we have lots of data. However, this difference in sizes is not significant if we only have a small amount of data. (I showed an example storing some random float numbers in my script for this suggestion.)
 
 Step 3: Suggest a strategy for calculating the average that would not require storing all the data in memory. 
-
 
 I suggest calculating the average by looping through the total weight and number of weights one by one without storing them in a list. The code was displayed below: 
 
