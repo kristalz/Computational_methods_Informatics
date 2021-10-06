@@ -4,7 +4,6 @@ with open('weights.txt') as f:
         weights.append(float(line))
 print("average =", sum(weights) / len(weights))
 
-
 # Explain what went wrong (6 points). 
 
 
@@ -19,15 +18,18 @@ print("average =", sum(weights) / len(weights))
 import sys
 print(sys.getsizeof(weights))
 
+# 312
+
 # I then imported sys and used the function "getsizeof" to get the memory size of my list. It returned 312 bytes.
 
 # Then I wanted to see the size of individual element in my list. 
 
 print(sys.getsizeof(weights[0]))
 
-# It returned 24 bytes.
+# 24
 
-print(len(weights))
+len(weights)
+# 30
 
 # Since there are a total of 30 elements inside my list. The total size could be 24*30 = 720 bytes, which is almost 2.3 times the original size of the list. 
 # This means that Python almost doubled the size of my original data. Therefore, it is likely that "my friend"'s computer consumed more than 8 GB memories as loading the file and thus exceeded the RAM limit.
@@ -38,18 +40,23 @@ print(len(weights))
 # I suggest storing the list of data inside an array instead of a list, which can substantially reduce the overhead memory. 
 # I get this idea from a blog https://pythonspeed.com/articles/python-integers-memory/. 
 
-import numpy as ny
+import numpy as np
 import random
 
+# Storing random float numbers in an array
 arr = ny.array([float(random.randint(1,1000)) for _ in range(10000)])
-print(arr)
+print(sum(arr))
+# 5042391.0
 print(sys.getsizeof(arr))
 # 80104
 
+# Storing random float numbers in a list
 l = [float(random.randint(1,1000)) for _ in range(10000)]
-print(l)
+print(sum(l))
+# 5008535.0
 print(sys.getsizeof(l))
 # 85176
+
 
 # Compared to the size of list, an array has a much smaller sizes. Using an array can be useful when dealing with a large amount of data. 
 
@@ -83,6 +90,6 @@ with open('weights.txt') as f:
 print("average =", sum(weights) / len(weights))
 # average = 37.38430000000001
 
-# We see here the sizes of total_weight and count_weight are just the single sizes of each elements. 
+# We could see that the sizes of total_weight and count_weight are just the single size of each elements. 
 # We got the same result of average weight by not storing the data. Thus, this strategy will work. 
 
