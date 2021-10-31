@@ -254,7 +254,7 @@ Visualize the results for PC1 vs PC2
 
 Commonts: There is increased lack of separation from the three groups of queries when the PCA components increased. We know that the axes of PCA components are ranked in order of important by the % of variability in which that PC0 > PC1 > PC2. There is lack of separation in the differences along the less important axes (PC1 and PC2). In both `PC0 vs PC2` and `PC1 vs PC2`, the third query "Alzheimer/Cancer" disappears from the plots. Thus, we know that the variation among the papers can be best explained by PC0 and PC1, which is also illustrated from the plots. 
 
-#### Question 3 Repeat the above using LDA instead of PCA. In your commentary, be sure to compare PCA vs LDA. 
+#### Question 3 Now look at the distribution with the LDA projection. Note that if you have n categories (presumably 2 or maybe 3 for you), LDA will give at most n-1 reduced dimensions... so graphically show the LDA projection results in the way that you feel best captures the distribution. Comment on your choice, things you didn't chose and why, and any other differences about what you saw with PCA vs LDA.
 
 Package requirement: 
 ```
@@ -268,11 +268,22 @@ Step 3: Plot the LDA data frame to visualize the results for LD0 vs LD1.
 
 ![LD0 vs LD1](https://github.com/kristalz/BIS634/blob/main/Images/LD0%20vs%20LD1.png)
 
-From the plot, we see that the overlap paper `'Alzhiemer/Cancer'` is greatly separated from the other two queries. The cluster of `Alzheimer` and `Cancer` papers are clearly sparated as well. The separation among papers using an LDA model is better than using an PCA model, since maximizing separation is the main goal for LDA. Different from PCA, LDA takes the query label into consideration and minimizes the variation within each category of label. LDA reduces dimensionality while preserving as much of the class discrimination information as possible at the same time. In contrast, PCA does not require knowing the query labels beforehead. In general, PCA performs better when sample size per class is small, while LDA works better with large dataset having multiple classes. Thus, in our case, using a LDA model to predict query classification for each paper is better. 
+From the plot, we see that the overlap paper `'Alzhiemer/Cancer'` is greatly separated from the other two queries. The cluster of `Alzheimer` and `Cancer` papers are clearly sparated as well. The separation among papers using an LDA model is better than using an PCA model, since maximizing separation is the main goal for LDA. Different from PCA, LDA takes the query label into consideration and minimizes the variation within each category of label. LDA reduces dimensionality while preserving as much of the class discrimination information as possible at the same time. In contrast, PCA does not require knowing the query labels beforehead. In general, PCA performs better when sample size per class is small, while LDA works better with large dataset having multiple classes. Thus, in our case, using a LDA model to predict query classification for each paper is better. I chose three classifications of queriers in both PCA and LDA model because I considered the overlap paper as an individual group. This would allow me to separate the overlap paper from the two groups of paper. 
 
 ## Exercise 4
 <br/>
 
+In a single processor version, the merge sort algorithm first divideds a list into two sublists, the left and right branches. Then it divides each half into another two sublists, and keeps dividing recursively until the resulting len of the sublists is one. Now those sublists that consist of only one element will be sorted and merged together into a sorted list. This process continues untill all sublists are sorted and merged back to a single sorted list. 
+
+The drawback of this algorithm is that it right sublist must procedd after the left sublist completing the entire sorting process. However, the sorting processes of left and right sublist are independent so they can operate simultaneously in a 2-processor parallel version of merge sort. Therefore, after a list divided into left and right half, one processor keeps spliting the the left half while another processor keeps spliting the other half at the same time. When we reach to the point where the size of each half is one, the two processors can merge the separte elements together until there are only two left and right sublists. 
+
+Now we are approaching the final merging. This can be only completed by a single processor because it is dependent on the sorting process of the two largest left and right sublists. It cannot occur until the two independent largest left and right sublists are sorted. 
+
+I will validate my results by passing a random list of items into both version of merge sort algorithm. Then I will print out the sorted list in both version to see if the parallel algorithm return the same result. I will compute an execute time function to calculate and compare the time spent for both versions of merge sort. To visualize the comparison, I will plot the time spent for both version in a plotnine ggplot. If the time spent for the single version is 1.5 over the parallel version of merge sort and both return a same sorted list, the parallel version of merge sort beats the single version. 
+
+I compared the runtime of two version of merge sort. From the graph below we could not visualize the benefits of paralell version due to the large amount of time spending in overhead communication. However, the runtime begins to diverge as the data size increases to 10^6. The runtime roughly speeds up to 1.5x when the data size was close to 10^7. Please see the verification of the resulting lists in my HW3-Exercise 4 scrip.(I only printed a small portion of the result.) The sorting results were the same for both versions. 
+
+![runtime_comparison](https://github.com/kristalz/BIS634/blob/main/Images/runtime_comparison.png)
 
 ## Exercise 5
 <br/>
@@ -401,3 +412,6 @@ I also compred the effects in the two other levels of activities.
 ![vigorous_activity](https://github.com/kristalz/BIS634/blob/main/Images/vigorous_activity.png)
 
 Again, most responders had at least 10 minutes muscular and vigorous activities weekly. From the three graphs above, we can see that the relationship between activity frequency and hypertension is not clear, regardless of the type of activity. 
+
+## Appendix 
+Please refer the scripts for five exercises in the Script/HW3 folder. 
