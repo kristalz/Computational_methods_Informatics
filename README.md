@@ -2,16 +2,13 @@
 
 Author: Kristal Zhou
 
-Date: 10/26/2021
+Date: 11/2/2021
 
 ## Exercise 1 
-<br/>
 
 ### Code Instructions and answers
-<br/>
 
 #### Question 1: Use the requests module (or urllib) to use the Entrez API to identify the PubMed IDs for 1000 Alzheimers papers from 2019 and for 1000 cancer papers from 2019. 
-<br/>
 
 Packages requirement: 
 
@@ -30,7 +27,6 @@ Step 2: Execute the function by using `if __name__ == "__main__"` to find PubMed
 Answer: The two lists of 1000 PubMed IDs for two diseases are displayed in `HW3-Exercise1` script. 
 
 #### Quetion 2: Use the Entrez API via requests/urllib to pull the metadata for each such paper found above (both cancer and Alzheimers) (and save a JSON file storing each paper's title, abstract, MeSH terms (DescriptorName inside of MeshHeading), and the query that found it that is of the general form. 
-<br/>
 
 Packages requirement:
 
@@ -80,13 +76,10 @@ I checked that I have captured those italized words as well.
 
 
 ## Exercise 2
-<br/>
 
 ### Code Instructions and answers
-<br/>
 
 #### Question 1: What fraction of the Alzheimer's papers have no MeSH terms? (2 points) What fraction of the cancer papers have no MeSH terms? (2 points)
-<br/>
 
 Package requirement: 
 ```
@@ -190,13 +183,11 @@ Answer:
 
 ![top_5_mesh](https://github.com/kristalz/BIS634/blob/main/Images/top_5_mesh.jpg)
 
-
 #### Question 5: Comment on any findings or limitations from the table and any ways you see to get a better understanding of how the various MeSH terms relate to each other.
 
 Answer: It is not surprising to see that both sets of papers have the terms "humans, female, male, and aged" in their top five mesh terms list (with "humans" as the most common term), because Alzheimer and cancer are human disease. From the table, we can see that "male" appears more in both sets of papers than "female" does, implying that more studies are conducted on males for both diseases. The least common term from the table is "middle aged". This also makes sense because Alzheimer disease is more likely occur in the elderly, while some cancers can occur in middle age group. We can also see that when two different mesh terms combine, the counts that they appear in both sets of paper are fewer. For example, while the fourth most common mesh term "Alzheimer disease" in Alzheimer paper has total 699 counts, it has fewer counts when combine with other terms. There is a limitation in these mesh terms. The top five mesh terms in both sets of paper except for "Alzheimer disease" are so common and general that they can be applied in all other diseases as well. Thus, it might not be helpful to refine a search query for a speficific disease using these terms. 
 
 ## Exercise 3
-<br/>
 
 ### Installation Instructions
 <br/>
@@ -209,7 +200,6 @@ py -m pip install sklearn
 ```
 
 ### Code Instructions and answers
-<br/>
 
 Packages requirment
 ```
@@ -271,7 +261,6 @@ Step 3: Plot the LDA data frame to visualize the results for LD0 vs LD1.
 From the plot, we see that the overlap paper `'Alzhiemer/Cancer'` is greatly separated from the other two queries. The cluster of `Alzheimer` and `Cancer` papers are clearly sparated as well. The separation among papers using an LDA model is better than using an PCA model, since maximizing separation is the main goal for LDA. Different from PCA, LDA takes the query label into consideration and minimizes the variation within each category of label. LDA reduces dimensionality while preserving as much of the class discrimination information as possible at the same time. In contrast, PCA does not require knowing the query labels beforehead. In general, PCA performs better when sample size per class is small, while LDA works better with large dataset having multiple classes. Thus, in our case, using a LDA model to predict query classification for each paper is better. I chose three classifications of queriers in both PCA and LDA model because I considered the overlap paper as an individual group. This would allow me to separate the overlap paper from the two groups of paper. 
 
 ## Exercise 4
-<br/>
 
 In a single processor version, the merge sort algorithm first divideds a list into two sublists, the left and right branches. Then it divides each half into another two sublists, and keeps dividing recursively until the resulting len of the sublists is one. Now those sublists that consist of only one element will be sorted and merged together into a sorted list. This process continues untill all sublists are sorted and merged back to a single sorted list. 
 
@@ -286,7 +275,6 @@ I compared the runtime of two version of merge sort. From the graph below we cou
 ![runtime_comparison](https://github.com/kristalz/BIS634/blob/main/Images/runtime_comparison.png)
 
 ## Exercise 5
-<br/>
 
 Packages requirement 
 ```
