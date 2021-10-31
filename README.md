@@ -414,4 +414,109 @@ I also compred the effects in the two other levels of activities.
 Again, most responders had at least 10 minutes muscular and vigorous activities weekly. From the three graphs above, we can see that the relationship between activity frequency and hypertension is not clear, regardless of the type of activity. 
 
 ## Appendix 
-Please refer the scripts for five exercises in the Script/HW3 folder. 
+Please also refer the scripts for five exercises in the Script/HW3 folder (https://github.com/kristalz/BIS634/tree/main/Scripts/HW3). 
+Exercise 1: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise1.ipynb
+![image](https://user-images.githubusercontent.com/90003165/139563448-5dcc33c8-fd47-4f1b-9180-8afc4643a829.png)
+![image](https://user-images.githubusercontent.com/90003165/139563463-799fdead-134f-4cac-b24d-3a8a4c3ff1a4.png)
+![image](https://user-images.githubusercontent.com/90003165/139563473-f290fbbd-5652-42ae-990c-f4ccf053aed3.png)
+![image](https://user-images.githubusercontent.com/90003165/139563485-807f9cbd-2e33-4fbe-8cd4-5524e6746fd5.png)
+![image](https://user-images.githubusercontent.com/90003165/139563489-c104a6f9-e734-49a7-8e6f-326f3bd1d8bd.png)
+
+Exercise 2: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise2.ipynb
+![image](https://user-images.githubusercontent.com/90003165/139563507-d7fdad66-189d-4a11-8898-e32c172c8ea4.png)
+![image](https://user-images.githubusercontent.com/90003165/139563517-f20b23c5-882d-493d-9bc3-85875db1f6d7.png)
+![image](https://user-images.githubusercontent.com/90003165/139563528-7fe354ca-cfd5-4b28-822f-026c70049769.png)
+![image](https://user-images.githubusercontent.com/90003165/139563539-a9e4ec42-981c-40a9-9a08-98047207ba32.png)
+![image](https://user-images.githubusercontent.com/90003165/139563548-86866df7-5967-4827-9179-49b8e9be5092.png)
+![image](https://user-images.githubusercontent.com/90003165/139563551-16163318-ad6d-4d9a-8a2e-39e84f25c0e3.png)
+![image](https://user-images.githubusercontent.com/90003165/139563564-d4073f6c-6b47-4a22-b021-7e6c8a864f7f.png)
+
+Exercise 3: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise3.ipynb
+![image](https://user-images.githubusercontent.com/90003165/139563582-31f62d67-2b68-4c8d-b409-2205d66913f8.png)
+![image](https://user-images.githubusercontent.com/90003165/139563593-8f5b1c92-8553-4c07-9b94-a722a2a6b5f2.png)
+![image](https://user-images.githubusercontent.com/90003165/139563600-4bc3f83a-c1e7-4779-858b-6a53d0ab6e0e.png)
+![image](https://user-images.githubusercontent.com/90003165/139563605-2900f349-3e8d-4a4d-a32f-847f8c25a3b1.png)
+![image](https://user-images.githubusercontent.com/90003165/139563611-ea888455-999a-48be-bce3-c6eb4bb021c5.png)
+![image](https://user-images.githubusercontent.com/90003165/139563625-70ea0e9a-fd17-474d-ac44-853617d23ac7.png)
+![image](https://user-images.githubusercontent.com/90003165/139563633-7c7b7ed6-db7a-451f-9b04-c514d33883b7.png)
+![image](https://user-images.githubusercontent.com/90003165/139563643-807cc0d8-713b-43f8-bea9-034b30e5dfe4.png)
+
+Exercise 4: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise%204.ipynb
+![image](https://user-images.githubusercontent.com/90003165/139563677-9df1154d-4e56-4db0-b39d-786788533c7e.png)
+![image](https://user-images.githubusercontent.com/90003165/139563696-83e4edc2-b7dd-49e9-ae74-ac8ffbb8e168.png)
+![image](https://user-images.githubusercontent.com/90003165/139563715-42b6122e-2d10-41de-b230-d3a676b089b0.png)
+![image](https://user-images.githubusercontent.com/90003165/139563724-97db9201-335f-440a-aefe-5e208f448f71.png)
+![image](https://user-images.githubusercontent.com/90003165/139563741-5d7816b5-29fd-4ad5-bf67-171e6e731497.png)
+
+Exercise 5: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise5.ipynb
+![image](https://user-images.githubusercontent.com/90003165/139563760-ebed93f7-a428-4f5c-8831-5a924e3ee119.png)
+![image](https://user-images.githubusercontent.com/90003165/139563770-1eddeb12-668c-4f25-b827-be6de648266d.png)
+![image](https://user-images.githubusercontent.com/90003165/139563783-fbe327fe-26fc-4bf1-8315-66ee15a1ace4.png)
+![image](https://user-images.githubusercontent.com/90003165/139563803-a75c88a8-e7d8-4775-b373-f54a3ca777e7.png)
+![image](https://user-images.githubusercontent.com/90003165/139563828-06c66750-9a1b-4084-83e4-2b76654a0122.png)
+![image](https://user-images.githubusercontent.com/90003165/139563864-1af5ed5a-6678-440f-af44-383734a114ee.png)
+![image](https://user-images.githubusercontent.com/90003165/139563876-57e1ee4d-83e4-4108-8ca4-6282deeb9b84.png)
+![image](https://user-images.githubusercontent.com/90003165/139563879-586b0429-1360-478b-a66f-39e2c0b2339b.png)
+![image](https://user-images.githubusercontent.com/90003165/139563887-953485bb-53d2-4416-ab07-e5884f120259.png)
+![image](https://user-images.githubusercontent.com/90003165/139563890-6e751e86-fd90-43ef-aa91-005c068ae327.png)
+![image](https://user-images.githubusercontent.com/90003165/139563901-7a69adf2-b1b7-4c70-8f3d-ffa2e6c60a8f.png)
+![image](https://user-images.githubusercontent.com/90003165/139563905-3ae0ffc4-e39f-49eb-8ca6-0c83287bdb03.png)
+![image](https://user-images.githubusercontent.com/90003165/139563912-9b9ec039-7f5b-4c6d-a8f4-cca9027eca0a.png)
+![image](https://user-images.githubusercontent.com/90003165/139563918-5a78932f-9d9a-4a54-900b-51a9f5638fec.png)
+![image](https://user-images.githubusercontent.com/90003165/139563927-b82ccf47-f499-41bf-9543-7ac887ca8756.png)
+![image](https://user-images.githubusercontent.com/90003165/139563934-778093c0-cac4-4efe-961e-c99e410166d3.png)
+![image](https://user-images.githubusercontent.com/90003165/139563938-a43abdbf-fc5d-47a5-83a2-55704c8d03e0.png)
+![image](https://user-images.githubusercontent.com/90003165/139563942-666450f9-9d4d-41ce-a105-0d376212ba80.png)
+![image](https://user-images.githubusercontent.com/90003165/139563946-99e18693-0454-4335-8b26-95673f4d4db2.png)
+![image](https://user-images.githubusercontent.com/90003165/139563951-788f63cf-c604-4e31-9d15-089eaa035457.png)
+![image](https://user-images.githubusercontent.com/90003165/139563958-b7369a34-ab20-4ca0-b614-545a6a3deee6.png)
+![image](https://user-images.githubusercontent.com/90003165/139563960-b7f61091-32ed-45d5-a40d-972010ecd309.png)
+![image](https://user-images.githubusercontent.com/90003165/139563966-9055052c-c906-4b40-90f9-721be58f731c.png)
+![image](https://user-images.githubusercontent.com/90003165/139563992-288474b9-0d30-42e8-9e93-bdc174687de2.png)
+![image](https://user-images.githubusercontent.com/90003165/139563984-cf95f42a-ec7e-44b4-97f3-2cb1e024370f.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
