@@ -56,7 +56,7 @@ Find the overlap PubMed Id by intersecting two lists of articles'IDs using the `
 
 Step 3: Run the function created in `Step 1` to store all article information into the dictionary created inside the function. First store the Alzhiemer papers, then update the file with cancer papers. Update the `query` for the overlap paper with `Alzheimer/Cancer`. Use `write` mode `w` to convert the dictionary of all articles' metadata to json file by using the `json.dumps` function. Then, close the file to save memory for run time. 
 
-Answer: Please see the Json file `pubmed_articles.json` under the main branch. 
+Answer: Please see the Json file `pubmed_articles.json` under the main branch. (https://raw.githubusercontent.com/kristalz/BIS634/main/pubmed_articles.json?token=AVOVNXPF32ECPQNXHCGAGNDBQG42O) 
 
 During my extracting process, I checked my results by searching a couples papers which have some embedded childnodes inside their titles or abstracts. For example, inside the metadata for article  33939349 (<https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&id=33939349>), there are some embedded nodes such as "sup 1", "sup 2". 
 
@@ -159,6 +159,50 @@ The 10 most common Mesh terms for the Alzheimer papers are:
  ```
 
 ![can_mesh_term](https://github.com/kristalz/BIS634/blob/main/Images/can_mesh_term.png)
+
+To test my code for counting the frequencies for both articles' mesh terms, I extracted the first five items from both articles' mesh term lists as my two test lists. 
+
+```
+# Create a test list that consists of the first fivee items in the alzheimer_with_mesh_list
+alzheimer_with_mesh_list_test = list(alzheimer_with_mesh.values())[:5]
+alzheimer_mesh_list_test = [x["mesh"] for x in alzheimer_with_mesh_list_test]
+
+cancer_with_mesh = {pmid: data for pmid, data in cancer_data.items() if data["mesh"] != []}
+cancer_with_mesh_list_test = list(cancer_with_mesh.values())[:5]
+cancer_mesh_list_test = [x["mesh"] for x in cancer_with_mesh_list_test]
+```
+
+Then I ran my code to count the most frequent 10 mesh terms in the two test lists and manually checked the frequencies for the mesh terms by printing out the results. Since I confirmed that my results were correct for my test lists, my code would also work for the original JSON file. 
+
+The results for Alzheimer mesh list test: 
+```
+[('Humans', 5),
+ ('Alzheimer Disease', 3),
+ ('Aged', 2),
+ ('Female', 2),
+ ('Male', 2),
+ ('Amyloid', 1),
+ ('Amyloid beta-Peptides', 1),
+ ('Amyloidosis', 1),
+ ('Plaque, Amyloid', 1),
+ ('Cardiovascular Diseases', 1)]
+ ```
+ 
+ The results for cancer mesh list test: 
+ ```
+ [('Humans', 4),
+ ('Molecular Structure', 3),
+ ('Phytochemicals', 3),
+ ('A549 Cells', 2),
+ ('Antineoplastic Agents, Phytogenic', 2),
+ ('Adolescent', 1),
+ ('Adult', 1),
+ ('Age Distribution', 1),
+ ('Aged', 1),
+ ('Aged, 80 and over', 1)]
+ ```
+
+For the entire test please refer to the appendix or HW3-Exercise2_test.ipynb file in the script folder (https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise2_test.ipynb). 
 
 #### Question 4: Make a labeled table with rows for each of the top 5 MeSH terms from the Alzheimer's query and columns for each of the top 5 MeSH terms from the cancer query. For the values in the table, provide the count of papers (combined, from both sets) having both the matching MeSH terms. (5 points)
 
@@ -425,6 +469,15 @@ Please also refer the scripts for five exercises in the Script/HW3 folder (https
 ![image](https://user-images.githubusercontent.com/90003165/139563548-86866df7-5967-4827-9179-49b8e9be5092.png)
 ![image](https://user-images.githubusercontent.com/90003165/139563551-16163318-ad6d-4d9a-8a2e-39e84f25c0e3.png)
 ![image](https://user-images.githubusercontent.com/90003165/139563564-d4073f6c-6b47-4a22-b021-7e6c8a864f7f.png)
+
+### Exercise 2 test: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise2_test.ipynb
+![image](https://user-images.githubusercontent.com/90003165/139960932-bd7ba5c8-f37b-41b5-be37-4668de0b0e6c.png)
+![image](https://user-images.githubusercontent.com/90003165/139960976-592d0a7e-ffa6-47b5-936b-57b5e354f44c.png)
+![image](https://user-images.githubusercontent.com/90003165/139961023-66dc6765-08fe-48ae-a447-878486caadff.png)
+![image](https://user-images.githubusercontent.com/90003165/139961067-2f8231c4-e5c1-47fc-97d3-7aeafc794401.png)
+![image](https://user-images.githubusercontent.com/90003165/139961113-65af3b59-eed9-47e0-b0e4-f37846b17bab.png)
+![image](https://user-images.githubusercontent.com/90003165/139961158-442fcbab-4728-4824-b316-88d675a030e9.png)
+
 
 ### Exercise 3: https://github.com/kristalz/BIS634/blob/main/Scripts/HW3/HW3-Exercise3.ipynb
 
