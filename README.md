@@ -258,19 +258,23 @@ Step 3: Plot the LDA data frame to visualize the results for LD0 vs LD1.
 
 ![LD0 vs LD1](https://github.com/kristalz/BIS634/blob/main/Images/LD0%20vs%20LD1.png)
 
-From the plot, we see that the overlap paper `'Alzhiemer/Cancer'` is greatly separated from the other two queries. The cluster of `Alzheimer` and `Cancer` papers are clearly sparated as well. The separation among papers using an LDA model is better than using an PCA model, since maximizing separation is the main goal for LDA. Different from PCA, LDA takes the query label into consideration and minimizes the variation within each category of label. LDA reduces dimensionality while preserving as much of the class discrimination information as possible at the same time. In contrast, PCA does not require knowing the query labels beforehead. In general, PCA performs better when sample size per class is small, while LDA works better with large dataset having multiple classes. Thus, in our case, using a LDA model to predict query classification for each paper is better. I chose three classifications of queriers in both PCA and LDA model because I considered the overlap paper as an individual group. This would allow me to separate the overlap paper from the two groups of paper. 
+From the LDA plot, we see that the overlap paper `'Alzhiemer/Cancer'` is greatly separated from the other two queries. The cluster of `Alzheimer` and `Cancer` papers are clearly sparated as well. The separation among papers using an LDA model is better than using an PCA model, since maximizing separation is the main goal for LDA. Different from PCA, LDA takes the query label into consideration and minimizes the variation within each category of label. LDA reduces dimensionality while preserving as much of the class discrimination information as possible at the same time. In contrast, PCA does not require knowing the query labels beforehead. In general, PCA performs better when sample size per class is small, while LDA works better with large dataset having multiple classes. By visualizing three clusters in the LDA plot and PC0 vs PC1, I know that both algorithms have right predictions using the transformer model. However, in our case, using a LDA model to predict query classification for each paper may be better. I chose three classifications of queriers in both PCA and LDA model because I considered the overlap paper as an individual group. This would allow me to separate the overlap paper from the two groups of paper. 
 
 ## Exercise 4
 
 In a single processor version, the merge sort algorithm first divideds a list into two sublists, the left and right branches. Then it divides each half into another two sublists, and keeps dividing recursively until the resulting len of the sublists is one. Now those sublists that consist of only one element will be sorted and merged together into a sorted list. This process continues untill all sublists are sorted and merged back to a single sorted list. 
 
-The drawback of this algorithm is that it right sublist must procedd after the left sublist completing the entire sorting process. However, the sorting processes of left and right sublist are independent so they can operate simultaneously in a 2-processor parallel version of merge sort. Therefore, after a list divided into left and right half, one processor keeps spliting the the left half while another processor keeps spliting the other half at the same time. When we reach to the point where the size of each half is one, the two processors can merge the separte elements together until there are only two left and right sublists. 
+The drawback of this algorithm is that the right sublist can only proceed after the left sublist completing the entire sorting process. However, the sorting processes of left and right sublist are independent because they are not sharing the same resources. Thus, they can operate simultaneously in a 2-processor parallel version of merge sort. 
+
+I am going to use `.pipe()` in the `multiprocessing` module to enable communication between the two processors. The pipes will be consisted of a sender and a receiver for each processor. The two processors will start simultaneously by using `.start()`, and combine the sorting results of two processors by using `.join()`. 
+
+After a list divided into left and right half, one processor keeps spliting the left half while another processor keeps spliting the other half at the same time. When we reach to the point where the size of each half is one (only one element left), the two processors can merge the separte elements together until there are only two left and right sublists. 
 
 Now we are approaching the final merging. This can be only completed by a single processor because it is dependent on the sorting process of the two largest left and right sublists. It cannot occur until the two independent largest left and right sublists are sorted. 
 
 I will validate my results by passing a random list of items into both version of merge sort algorithm. Then I will print out the sorted list in both version to see if the parallel algorithm return the same result. I will compute an execute time function to calculate and compare the time spent for both versions of merge sort. To visualize the comparison, I will plot the time spent for both version in a plotnine ggplot. If the time spent for the single version is 1.5 over the parallel version of merge sort and both return a same sorted list, the parallel version of merge sort beats the single version. 
 
-I compared the runtime of two version of merge sort. From the graph below we could not visualize the benefits of paralell version due to the large amount of time spending in overhead communication. However, the runtime begins to diverge as the data size increases to 10^6. The runtime roughly speeds up to 1.5x when the data size was close to 10^7. Please see the verification of the resulting lists in my HW3-Exercise 4 scrip.(I only printed a small portion of the result.) The sorting results were the same for both versions. 
+I used a larger data set than that of the original sizes in the slides because the relatively large overhead and communication time in parallel version of merge sort might offset the speedup. Thus, it would be easier to visualize the time difference using a larger dataset. I compared the runtime of two version of merge sort. From the graph below we could not visualize the benefits of paralell version due to the large amount of time spending in overhead communication. However, the runtime begins to diverge as the data size increases to 10^6. The runtime roughly speeds up to 1.5x when the data size was close to 10^7. Please see the verification of the resulting lists in my HW3-Exercise 4 scrip.(I only printed a small portion of the result because it was a large data set) The sorting results were the same for both versions. 
 
 ![runtime_comparison](https://github.com/kristalz/BIS634/blob/main/Images/runtime_comparison.png)
 
@@ -291,7 +295,7 @@ This dataset is a round 3 healthcare survey conducted by  Research and Developme
 
 ### Prepare and clean the data 
 
-First I loaded the data into a pandas data frame and changed all missing values into `NAN`. There are a variety forms of missing values: The `'.',' .','   . '`represent the missing values, whereas `998,98` reresent "implicit refusal (skipping the question)' according to the dataset codebook. I checked multiple times with the orginal csv file to make sure I standardize all the missing values. I will elaborate how I handled these missing values and what reasons I though they were missing later in this section. 
+First I loaded the data into a pandas data frame and changed all missing values into `NAN`. There are a variety forms of missing values: The `'.',' .','   . '`represent the missing values, whereas `998,98` represent "implicit refusal (skipping the question)' according to the dataset codebook. I checked multiple times with the orginal csv file to make sure I standardize all the missing values. I will elaborate on how I handled these missing values and what reasons I thought they were missing later in this section. 
 ```
 data = pd.read_csv('C:/Users/kryst/OneDrive/Desktop/Fall 1st/BIS 634/RANDS3.csv',na_values = ['.',' .','   . ',998,98]) # Replacing all missing values 
 data.head()
@@ -300,9 +304,9 @@ Here is the glimpse of the data with missing values:
 
 ![Data with missing values](https://github.com/kristalz/BIS634/blob/main/Images/Data%20with%20missing%20values.jpg)
 
-The column names were coded and would not be helpful in later analysis. I decided to changed them into meaningful names. I was interested to learn the relationships of hypertension and some of its potential risk factors available in the data. The risk factors for hypertension can be modifiable such as smoking, physical activities, and other related diseases (i.e., diabetes), and unmodifiable such as age and race. Thus, I selected the columns that represent the risk factors from the data: age, gender, race/ethnicity, depression prediabetes, diabetes (ages and types of diagnoses are also included), hypercholemia, smoking status and three levels of physical activities (light/moderate, muscular, and vigorous). The smoking status were described by two columns. The `Smoking` column captured the answers for "Have you smoked at least 100 cigarettes in your entire life? " and `Smoking frequency` for "Do you now smoke cigarettes every day, some days, or not at all?". 
+The column names were coded and would not be helpful in later analysis, so I decided to changed them into meaningful names. I was interested to learn the relationships of hypertension and some of its potential risk factors available in the data. The risk factors for hypertension can be modifiable such as smoking, physical activities, and other related diseases (i.e., diabetes), and unmodifiable such as age and race. Thus, I selected the columns that represent the risk factors from the data: age, gender, race/ethnicity, depression prediabetes, diabetes (ages and types of diagnoses are also included), hypercholemia, smoking status and three levels of physical activities (light/moderate, muscular, and vigorous). The smoking status were described by two columns. The `Smoking` column captured the answers for "Have you smoked at least 100 cigarettes in your entire life? " and `Smoking frequency` for "Do you now smoke cigarettes every day, some days, or not at all?". 
 
-I also included other demographic factors (education, employment, income) and geopgraphic information (region) to visualize the prevalence of hypertension in different parts of the U.S.. I included "depression" as a risk factor beccause I am interested about the psychological effects in hypertension. For both hypertension and hypercholemia diagnoses, I included the columns `Hypertension Past Year` and `Hypercholemia Past Year` to to present whether the responders had hypertension or hypercholemia during the past 12 months. These two columns are distinguished from the columns of `Hypertension Diagnose` and `Hypercholemia Diagnose` that captured the answers of responders' diagnose records not specified in a time frame. 
+I also included other demographic factors (education, employment, income) and geopgraphic information (region) to visualize the prevalence of hypertension in different parts of the U.S.. I included "depression" as a risk factor beccause I was interested about the psychological effects in hypertension. For both hypertension and hypercholemia diagnoses, I included the columns `Hypertension Past Year` and `Hypercholemia Past Year` to represent whether the responders had hypertension or hypercholemia during the past 12 months. These two columns are distinguished from the columns of `Hypertension Diagnose` and `Hypercholemia Diagnose` that captured the answers of responders' diagnose records not specified in a time frame. 
 
 The new data frame with selected columns is displayed below. I renamed the data frame as `htn_data`. 
 ![HTN_data_with_missing_values](https://github.com/kristalz/BIS634/blob/main/Images/HTN_data_with_missing_values.jpg)
@@ -311,11 +315,11 @@ I printed out the missing values for each column:
 
 ![Missing values counts](https://github.com/kristalz/BIS634/blob/main/Images/Missing%20values%20counts.jpg)
 
-Since there are high percentages of missing values in the five columns `'Hypertension Past Year', 'Hypercholemia Past Year', 'Diabetes Age', 'Diabetes Type', 'Smoking Frequency'`, I decided to drop these fields. The two columns `'Diabetes Age', 'Diabetes Type'` missed almost the entire participants' responses (n=2367 for both columns). I considered the missing values for these two columns as MAR (missing at random) because people who do not have ever diagnosed with diabetes would not fill out these two columns. Given that there are many missing values in these two columns, I assume that the majority of participants have not diagnosed with diabetes. 
+Since there were high percentages of missing values in the five columns `'Hypertension Past Year', 'Hypercholemia Past Year', 'Diabetes Age', 'Diabetes Type', 'Smoking Frequency'`, I decided to drop these fields. The two columns `'Diabetes Age', 'Diabetes Type'` missed almost the entire participants' responses (n=2367 for both columns). I considered the missing values for these two columns as MAR (missing at random) because people who was not diagnosed with diabetes would not fill out these two columns. Given that there were many missing values in these two columns, I assumed that the majority of participants have not diagnosed with diabetes. 
 
-In contrast, I consider  `'Smoking Frequency', 'Hypertension Past Year', 'Hypercholemia Past Year'` are MNAR(missing not at random). There are no clear patterns in the missing values and non-missing values in these three columns. The reasons what cause those missing values are unclear and unobserved. I was not sure if people who smoked or who have those two diagnoses forgot the answers or simply refused to answer the questions, because missingness was not measured by the researchers. 
+In contrast, I considered `'Smoking Frequency', 'Hypertension Past Year', 'Hypercholemia Past Year'` were MNAR(missing not at random). There were no clear patterns in the missing values and non-missing values in these three columns. The reasons what caused those missing values were unclear and unobserved. I was not sure if people who smoked or who had those two diagnoses forgot the answers or simply refused to answer the questions. The missingness was not measured by the researchers. 
 
-I also deleted the rows where values were missing in other columns, although I was aware that this might bias the data set and decrease the statistical power in my analsis. I also changed all values to integers. Here is the data set after reducing the missing values: 
+I also deleted the rows where values were missing in other columns, although I was aware that this might bias the data set and decrease the statistical power in my analysis. I also changed all values to integers. Here is the data set after reducing the missing values: 
 
 ![HTN_data_without_missing_values](https://github.com/kristalz/BIS634/blob/main/Images/HTN_data_without_missing_values.jpg)
 
@@ -329,11 +333,11 @@ I extracted a subset of dataframe by grouping `'Age','Gender','Race&Ethnicity'` 
 
 ![age_gender_race](https://github.com/kristalz/BIS634/blob/main/Images/age_gender_race.png)
 
-We can ses that hypertension is more prevalent in Whites(non-Hispanic) and 35-54 age group. The numbers of hypertension diagnose are relatively the same among females and males. 
+We could see that hypertension was more prevalent in Whites(non-Hispanic) and 35-54 age group. The numbers of hypertension diagnose were relatively the same among females and males. 
 
 2. Visualize the hypertension diagnose prevalence by ages, genders, and races separately.
 
-I would like to know how is hypertension associated with each of the three factors I extracted in step one. Therefore, I extracted three separate subsets by grouping `'Hypertension'` with `'Age','Gender','Race&Ethnicity'` one at a time. 
+I would like to know how hypertension was associated with each of the three factors I extracted in step one. Therefore, I extracted three separate subsets by grouping `'Hypertension'` with `'Age','Gender','Race&Ethnicity'` one at a time. 
 
 Compare counts of hyptersion diagnose by genders: 
 
@@ -347,7 +351,7 @@ Compare counts of hyptersion diagnose by Race/Ethnicity groups:
 
 ![htn_races](https://github.com/kristalz/BIS634/blob/main/Images/htn_races.png)
 
-Hypertension is more prevalent in the male responders, most prevalent in whites and in the elderly (64-70).We can observe that prevalences in ages are different when combining with race, in which hypertension is more prevalent in the middle ages (35-54) Whites. 
+Hypertension was more prevalent in the male responders, most prevalent in whites and in the elderly (64-70). We could observe that prevalences in ages were different when combining with race, in which hypertension is more prevalent in the middle ages (35-54) whites. 
 
 3. Visualize the hypertension diagnose prevalence in other demographic factors (education, employment, income, and region).
 
@@ -357,13 +361,13 @@ I followed the same procedures by grouping these four demographic factors above 
 
 ![ed_employ_region](https://github.com/kristalz/BIS634/blob/main/Images/ed_employ_region.png)
 
-We can see that more employed repsonders are diagnosed with hypertension, especially in the South and Midwest regions. 
+We could see that more employed repsonders were diagnosed with hypertension, especially in the South and Midwest regions. 
 
 Then I faceted the graph by education levels:
 
 ![facet_by_ed](https://github.com/kristalz/BIS634/blob/main/Images/facet_by_ed.png)
 
-Again, more repsonders who are employed are diagnosed with hypertension in the South and Midwest regions. Hypertension seems to be more prevalent in those who have higher educational degrees. 
+Again, more repsonders who were employed are diagnosed with hypertension in the South and Midwest regions. Hypertension seemed to be more prevalent in those who had higher educational degrees. 
 
 4. Visualize hypertension diagnose prevalence by prediabetes, diabetes, hypercholemia, smoking status, and levels of depression
 
@@ -375,13 +379,13 @@ Compare by diabetes/prediabetes, smoking states, and depression levels:
 
 ![facet_by_depre_prediab](https://github.com/kristalz/BIS634/blob/main/Images/facet_by_depre_prediab.png)
 
-The assocaition of hypertension and diabetes or prediabetes is stronger when the depression level is higher (weekly or daily). There are also more smokers diagnosed with hypertension. 
+The assocaition of hypertension and diabetes or prediabetes wass stronger when the depression level was higher (weekly or daily). There were also more smokers diagnosed with hypertension. 
 
 Compare by hypercholemia, smoking, and depression: 
 
 ![hypercholemia_depre_smok](https://github.com/kristalz/BIS634/blob/main/Images/hypercholemia_depre_smok.png)
 
-The assocaition of hypertension and hypercholemia is stronger when the depression level is higher (weekly or daily).
+The assocaition of hypertension and hypercholemia was stronger when the depression level was higher (weekly or daily).
 
 5. Visualize hypertension diagnose prevalence by levels of activities. 
 
@@ -391,15 +395,15 @@ I grouped the counts of hypertension by activity levels, age, and employment sta
 
 ![light_moderate activities](https://github.com/kristalz/BIS634/blob/main/Images/light_moderate%20activities.png)
 
-We can see that most responders had at least 10 minutes light to moderate physical activities weekly. However, the relationship between activity frequency and hypertension is not clear. Hypertension is most prevalent in those who are employeed before age of 64. 
+We could see that most responders had at least 10 minutes light to moderate physical activities weekly. However, the relationship between activity frequency and hypertension was not clear. Hypertension was most prevalent in those who are employeed before age of 64. 
 
-I also compred the effects in the two other levels of activities. 
+I also compared the effects in the two other levels of activities. 
 
 ![muscular_activity](https://github.com/kristalz/BIS634/blob/main/Images/muscular_activity.png)
 
 ![vigorous_activity](https://github.com/kristalz/BIS634/blob/main/Images/vigorous_activity.png)
 
-Again, most responders had at least 10 minutes muscular and vigorous activities weekly. From the three graphs above, we can see that the relationship between activity frequency and hypertension is not clear, regardless of the type of activity. 
+Again, most responders had at least 10 minutes muscular and vigorous activities weekly. From the three graphs above, we could see that the relationship between activity frequency and hypertension was not clear, regardless of the type of activity. 
 
 ## Appendix 
 Please also refer the scripts for five exercises in the Script/HW3 folder (https://github.com/kristalz/BIS634/tree/main/Scripts/HW3). 
