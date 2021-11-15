@@ -50,11 +50,11 @@ Step 4: Based on the scenario above, if I want to run a small number of trials u
 
 I choosed a = 0.3 and b = 0.7 as my initial guesses. From my results, I saw that the minimum in this query was 1.100000. The errors converged to 1.100000 after 7 trials, even though a and b were still changing slightly afterwards. However, I was not sure if I found my global minimum or not. I might be stucked at my local minimum atfter 7 iteration. Thus, this should be my true local minimum 1.100000 where a = 0.216607 and b = 0.689036. 
 
-![error_result_1]()
+![error_result_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/Error_result_1.jpg)
 
 Naively, I wanted to guess other values to find if there were value smaller than 1.100000. This time, I chosed a = 0.9 and b = 0.1 as my initial guesses. From my results, I saw that the minimum in this query was 1.000000, where a = 0.711950 and b = 0.168950. The function converged when after 11 iterations. This would be my global minimum.  
 
-![error_result_2]()
+![error_result_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/Error_results_2.jpg)
 
 ## Exercise 2
 <br/>
@@ -79,7 +79,7 @@ World city data set "worldcities.csv"(https://simplemaps.com/data/world-cities) 
 
 Step 1: Examine the data set using `head()`function. 
 
-![HW4_Exercise2_data]()
+![HW4_Exercise2_data](https://github.com/kristalz/BIS634/blob/main/Images/HW4/HW4_Exercise2_data.jpg)
 
 Step 2: Define Python Haversine function that calculates the distance between 2 global position system points (reference: https://stackoverflow.com/questions/4913349/haversine-formula-in-python-bearing-and-distance-between-two-gps-points). 
 
@@ -101,55 +101,55 @@ Step 5: Map the k clusters of cities on a Robinson map.
 
 I selected the first, two intermediate and the final plots for k = 5 clusters. 
 
-![k5_first]()
+![k5_first](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k5_first.jpg)
 
 From the first plot, we could see that cities in Eurasia had had the most numbers of divisions. Specifically, the right portion of Eurasia and Australia &Oceania was color coded in light blue. We could also notice that the majority of cities in Africa was in light blue as well.
 
-![k5_interm1]()
+![k5_interm1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k5_interm1.jpg)
 
 In this plot, however, Eurasia was divided into two clusters, probably one for Europe and the other for Asia. However, Asian cities in the left side was in different cluster. We could also see that the right half of Eurasia and Africa were in the same cluster.
 
-![k5_interm2]()
+![k5_interm2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k5_interm2.jpg)
 
 Here was another example intermediate plot. This time, Eurasia was basically color-coded in one cluster except some disperse cities in the right bottom corner. We could see that left top corner of Africa were in the same color as Europe.
 
-![k5_final]()
+![k5_final](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k5_final.jpg)
 
 Finally, we could clearly distinguish cities in Europe and Africa in this last plot, inwhich we had the convergence. Notice that there were few outliers in Africa color coded as the same as North American. Two important things we learnt from using k = 5: 1) Asia cities that are not next to Europe and Australia & Oceania had the same colors in the entire iteration; 2) Cities in Eurasia were eventually convered in one cluster likely due to proximity. 
 
 I selected the first, four intermediate and the final plots for k = 7 clusters. 
 
-![k7_first]()
+![k7_first](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k7_first.jpg)
 
 From the first plot, we noticed that the Eurasia again had the most divisions. Some cities in the Eurasia, Africa and South America were assigned in the same cluster. We could also see that a small portion of Europe in the left botton corner were assigned in a cluster as its own. 
 
-![k7_interm1]()
+![k7_interm1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k7_interm1.jpg)
 
 In these two example intermediate plots, we noticed that the size of that small cluster of cities in Europe expanded to the left top corner of Africa. This time we could see a sharp division between cities in Europe and Asia in Eurasia. More cities in Asia were assigned to a different cluster from the neighbor European cities. 
 
-![k7_interm2]()
+![k7_interm2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k7_interm2.jpg)
 
 These two plots show better division of cities between Europe and Asia. Nevertheless, Aisan cities on the left and right sides of the plot were still color coded differently. 
 
-![k7_final]()
+![k7_final](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k7_final.jpg)
 
 The final plot was not too different from the two intermediate plots above. Notice that cities in the left bottom corner of Europe and the top upper corner of Afica were still in same colors. The right protion of Asia (in the left side of the plot) and Austria&Oceania were still in the same cluster (both in yellow), although the size of which clearly shrinked compared to that when using k = 5. 
 
 I selected the first, two intermediate and the final plots for k = 15 clusters.
 
-![k15_first]()
+![k15_first](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k15_first.jpg)
 
 Cities in all continents were divided in different clusters. Interestingly, cities in North America were divided in most clusters that did not happen when using k = 5 or 7. Nevetheless cities in North America closet to those in South America were in the same. It was also interesting to see that cities in the right most corner of North America (in yellow) were in the same cluster as those in the middle of Eurasia. 
 
-![k15_interm1]()
+![k15_interm1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k15_interm1.jpg)
 
 While more cities in the right most corner of North America  were assigned in the same cluster as those in the middle of Eurasia, fewer Asian cities that were close to Australi&Oceania were assigned in the same cluster. 
 
-![k15_interm2]()
+![k15_interm2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k15_interm2.jpg)
 
 Again, we could see that more cities were colored coded in yellow in Eurasia. Almost all cities in the right poriton of Asia (in the left side of graph) were color coded differently from cities in Australi & Oceania.
 
-![k15_final]()
+![k15_final](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_with_interm/k15_final.jpg)
 
 Notice that divisions of clusters in North and South America did not change significantly in the entire iteration. At the same time, divisions between Asia and Australi & Oceania became more distinct comparing to those hwen using k = 5 or 7. 
 
@@ -157,43 +157,43 @@ I also ran five times for each clusters.
 
 1. k = 5 plots
 
-![k5_1]()
+![k5_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k5_1.jpg)
 
-![k5_2]()
+![k5_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k5_2.jpg)
 
-![k5_3]()
+![k5_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k5_3.jpg)
 
-![k5_4]()
+![k5_4](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k5_4.jpg)
 
-![k5_5]()
+![k5_5](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k5_5.jpg)
 
 From the five plots above, we could observe a fair variation each time when we assigned different initial centers (the seeds): For example, North and South America were assigned in the same clusters in the first and fourth plots, whereas Eurasia and Africa were assigned in the same clusters in the last plot. that the divisions in continents were quite different each time. We could also see The runtime for the five iterations span from 3.86 to 13.29 seconds, with a median of 6.46 seconds. 
 
 2. k = 7 plots
 
-![k7_1]()
+![k7_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k7_1.jpg)
 
-![k7_2]()
+![k7_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k7_2.jpg)
 
-![k7_3]()
+![k7_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k7_3.jpg)
 
-![k7_4]()
+![k7_4](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k7_4.jpg)
 
-![k7_5]()
+![k7_5](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k7_5.jpg)
 
 While there was a similar sense of variation, we could see a general increase of runtime when k = 7 clusters. The runtime for 7 clusters ranged from 5.10 to 19.33 seconds with a median of 8.72 seconds. 
 
 3. k= 15 plots
 
-![k15_1]()
+![k15_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k15_1.jpg)
 
-![k15_2]()
+![k15_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k15_2.jpg)
 
-![k15_3]()
+![k15_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k15_3.jpg)
 
-![k15_4]()
+![k15_4](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k15_4.jpg)
 
-![k15_5]()
+![k15_5](https://github.com/kristalz/BIS634/blob/main/Images/HW4/k_plots_random_multiple_tests/k15_5.jpg)
 
 Generally, cities in Eurasia were divided in most clusters comparing to those when using k = 5 or 7. Different from k = 5 or 7, we could see more similar clusters assignment in k = 15 (the second and the third plots), although they were in different colors. 
 
@@ -220,13 +220,13 @@ Step 2: Create a timing function that passes the function and 3 timing times. Re
 
 Step 3: Plot the runtime of function using plotnine on a log/log graph. I choose a range of n = 40 for this function because it would take a decent amount of time (about 2 mins) to run the function. I would not choose a larger size of n beyond that because the time complexity for fibonacci sequence is O(2^n). Thus, the runtime of the function will scale up rapidly with increasing sizes of n. 
 
-![HW4_Exercise3_1]()
+![HW4_Exercise3_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/HW4_Exercise3_1.png)
 
 Step 4: Modified the original function `r(n)` by using the decorator function `lru_cache` to cache the results for each n. Doing so can speed up the function significantly since `lru_cache` uses memoization technique reduces the execution time of the function. This decorator allows us to quickly cache what the function have calculated and continue executing the rest. 
 
 I chose to run this function in a size of n = 1000. I did not use a log y axis to plot the run time because the computer would return all times as exactly 1e-7 in a straight line. Then we could not visualize the changes of runtime from smaller to larger sizes of n. 
 
-![HW4_Exercise3_2]()
+![HW4_Exercise3_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/HW4_Exercise3_2.png)
 
 From the plot above, we could see that the only outlier is the runtime for the first n. We could also see that the runtime speed up significantly as the size of n passes 10. The caching information for this function was summarized below. 
 
@@ -236,7 +236,7 @@ CacheInfo(hits=3992, misses=999, maxsize=128, currsize=128)
 
 The runtime would be all in zero when I used `time.time()` instead of `time.perf_counter()`. 
 
-![HW4_Exercise3_3]()
+![HW4_Exercise3_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/HW4_Exercise3_3.png)
 
 
 ## Exercise 4 
@@ -299,11 +299,11 @@ agacc-tagcatcgac
 
 Verification: 
 
-![SW_test1_1]()
+![SW_test1_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test1_1.jpg)
 
-![SW_test1_2]()
+![SW_test1_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test1_2.jpg)
 
-![SW_test1_3]()
+![SW_test1_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test1_3.jpg)
 
 Test 2: For sequences 'tggtcgagaactacgtgac' and 'actagacctaccatcggc', there is only one possibility with a maximum score of 6:
 ```
@@ -312,11 +312,11 @@ agacctac
 ```
 Verification: 
 
-![SW_test2_1]()
+![SW_test2_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test2_1.jpg)
 
-![SW_test2_2]()
+![SW_test2_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test2_2.jpg)
 
-![SW_test2_3]()
+![SW_test2_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test2_3.jpg)
 
 Test 3: For sequences 'gtctcgagaactacgtgac' and 'agtacacctaccatcggc', there is one of the possibility with a maximum score of 5:
 ```
@@ -325,11 +325,11 @@ agtac-acct-ac
 ```
 Verification: 
 
-![SW_test3_1]()
+![SW_test3_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test3_1.jpg)
 
-![SW_test3_2]()
+![SW_test3_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test3_2.jpg)
 
-![SW_test3_3]()
+![SW_test3_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_test3_3.jpg)
 
 Step 5: Modified the `aligned` function by adding a parameter that passes different gap_penalty score. The other parts of the function remains the same. 
 
@@ -342,11 +342,11 @@ gcatcga
 ```
 Verification: 
 
-![SW_gap2_test1_1]()
+![SW_gap2_test1_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test1_1.jpg)
 
-![SW_gap2_test1_2]()
+![SW_gap2_test1_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test1_2.jpg)
 
-![SW_gap2_test1_3]()
+![SW_gap2_test1_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test1_3.jpg)
 
 Test 2: For sequences 'tggtcgagaactacgtgac' and 'actagacctaccatcggc', there is only one possibility with a maximum score of 6:
 ```
@@ -355,11 +355,11 @@ agacctac
 ```
 Verification: 
 
-![SW_gap2_test2_1]()
+![SW_gap2_test2_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test2_1.jpg)
 
-![SW_gap2_test2_2]()
+![SW_gap2_test2_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test2_2.jpg)
 
-![SW_gap2_test2_3]()
+![SW_gap2_test2_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test2_3.jpg)
 
 Test 3: For sequences 'gtctcgagaactacgtgac' and 'agtacacctaccatcggc', there is one of the possibility with a maximum score of 4:
 ```
@@ -368,11 +368,11 @@ ctac
 ```
 Verification: 
 
-![SW_gap2_test2_1]()
+![SW_gap2_test3_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test3_1.jpg)
 
-![SW_gap2_test2_2]()
+![SW_gap2_test3_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test3_2.jpg)
 
-![SW_gap2_test2_3]()
+![SW_gap2_test3_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap2_test3_3.jpg)
 
 Step 6: Assign the different scores match = 2, mismatch_penalty = 2, gap_penalty = 3
 
@@ -383,11 +383,11 @@ gcatcga
 ```
 Verification: 
 
-![SW_gap3_test_1]()
+![SW_gap3_test_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap3_test_1.jpg)
 
-![SW_gap3_test_2]()
+![SW_gap3_test_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap3_test_2.jpg)
 
-![SW_gap3_test_3]()
+![SW_gap3_test_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap3_test_3.jpg)
 
 Step 7: Assign the different scores match = 2, mismatch_penalty = 1, gap_penalty = 4
 
@@ -398,23 +398,114 @@ acacctac
 ```
 Verification: 
 
-![SW_gap4_test_1]()
+![SW_gap4_test_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap4_test_1.jpg)
 
-![SW_gap4_test_2]()
+![SW_gap4_test_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap4_test_2.jpg)
 
-![SW_gap4_test_3]()
+![SW_gap4_test_3](https://github.com/kristalz/BIS634/blob/main/Images/HW4/SW_tests/SW_gap4_test_3.jpg)
 
 
 ## Appendix
 Please also refer the scripts for five exercises in the Script/HW4 folder (https://github.com/kristalz/BIS634/tree/main/Scripts/HW4).
 
-### Exercise 1:
+### Exercise 1: https://github.com/kristalz/BIS634/blob/main/Scripts/HW4/HW4-Exercise1.ipynb
 
-### Exercise 2:
+![image](https://user-images.githubusercontent.com/90003165/141831067-93d5044a-9183-4226-9113-3c24c7940abe.png)
 
-### Exercise 3:
+![image](https://user-images.githubusercontent.com/90003165/141831118-d95c6ce3-3f8e-4b5b-a4c9-d464dd85e2fd.png)
 
-### Exercise 4:
+![image](https://user-images.githubusercontent.com/90003165/141831169-ba0c21c0-0756-42d2-9628-2391f1a37861.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831224-0d1248bc-c9c6-4b97-a8e9-643bd95e52de.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831311-f4fca221-40c5-4a92-8197-bc2a745bb243.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831362-2d905051-34e3-4559-9df0-50332bfd25ba.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831406-baa34af9-62f7-492f-a766-b8f947550339.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831499-35ffa7a8-d6e0-4f9f-aa95-9d0461f71125.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831514-dfd1b81e-ac84-44eb-8c90-0edaeb513e2c.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831568-021477eb-cba4-4366-86c8-ee8eaa7c5fe2.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831607-1e12e3f9-40bb-49ea-96ba-fac372a5600c.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831716-46a2ce33-83ca-43e3-909c-4b785001e732.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831746-78101380-c7e8-4d3c-97fb-2cc47f21a699.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141831779-18c17add-5c41-442f-aa99-fc74b6536e30.png)
+
+### Exercise 2: https://github.com/kristalz/BIS634/blob/main/Scripts/HW4/HW4-Exercise2-final-plots.ipynb
+
+![image](https://user-images.githubusercontent.com/90003165/141832396-9beb5a2c-7d0a-4fad-96fa-808c782ff733.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832653-f5771f2a-aa47-496d-a7d9-272aa4d1a7e2.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832710-42be88dc-0c19-4749-8ab0-d98a4936ad51.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832754-48670177-3a50-4a59-9983-0d12c8936e8c.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832794-b2440935-05b4-4b9a-ad86-2dee99aaa940.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832836-cd205cdb-0a2d-4d60-a648-58ac9497259e.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832874-1da12756-4641-48e4-82b3-657bff267708.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832900-9e15a177-db9f-49ee-8989-765d0796808f.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832930-37d68c27-1818-43af-9eb0-68c4e50c510d.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832959-d713eb91-c673-448b-a432-89ae64fb3b35.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141832985-ca775508-8a33-4307-b464-b615669b478a.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833018-706f234e-fa7b-4b4f-9900-23f981c4833e.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833043-594572f7-b12d-4781-8011-3feb6a438318.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833071-1e59328d-2c84-402b-8f2f-1c54b2292044.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833106-6877c332-8c78-45d1-be8d-c519188716c0.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833137-7fb5a927-9bd1-4898-8851-7ac79bd22ddf.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833162-9bebed8e-8070-465d-b348-c409292c67dc.png)
+
+Please also refer to https://github.com/kristalz/BIS634/blob/main/Scripts/HW4/HW4-Exercise2.ipynb if you would like see the intermediate plots for each cluster. 
+
+### Exercise 3: https://github.com/kristalz/BIS634/blob/main/Scripts/HW4/HW4-Exercise3.ipynb
+
+![image](https://user-images.githubusercontent.com/90003165/141833320-cea4ea20-e61c-496e-9eed-fabbe19b5763.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833349-26fa02af-7b49-4735-9a4c-536b38be4be9.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833387-2049b846-0505-497c-bbce-e3377ef4b8a2.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833417-8b1844f7-3632-494f-8ee8-ae86eae82984.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833454-d4aa8d16-058c-4562-a611-1db6b0d9c582.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833502-64c7189c-0131-4c43-ba21-04e4eaf3cf24.png)
+
+### Exercise 4: https://github.com/kristalz/BIS634/blob/main/Scripts/HW4/HW4-Exercise4.ipynb
+
+![image](https://user-images.githubusercontent.com/90003165/141833548-d9ab33fd-7e2e-40cd-a9d2-a798fb242a9a.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833591-aa329fcd-daab-4c8d-afda-f5e388df3936.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833625-e0da1842-5099-4bd8-b18f-9b8057f0ec19.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833678-769d2472-e3b7-4b24-8fa7-09e568579517.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833717-3f25bb3c-e67e-465e-84a5-d287af0aaca2.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833764-99f57226-b57b-4479-be8c-0ffd4e16975b.png)
+
+![image](https://user-images.githubusercontent.com/90003165/141833808-380df105-4bc2-4254-883a-8ed72023ba65.png)
+
 
 
 
