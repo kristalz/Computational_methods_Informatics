@@ -56,7 +56,7 @@ Naively, I wanted to guess other values to find if there were value smaller than
 
 ![error_result_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/Error_results_2.jpg)
 
-Generally, if I had not known how many minima there were, I would use the following stratergies to avoid local minima: 1) Start with different guesses and let each evolve as I did early. I might woncider chosing a series of a and b for while keeping other parameters (gamma, h, and stopping criteria) constant testing: E.g., a = 0.99, 0.999, 0.8, etc and b = 0.11, 0.15, 0.2, etc. 2) Allow stochastic jumps beyond the local area. 3) Stochastically accept increases to the function values. 4) Use a different learning rate to avoid missing the minima by overshooting or stop finding the minima earlier. 
+Generally, if I had not known how many minima there were, I would use many different guesses and let each evolve. I might woncider chosing a larger series of a and b for while keeping other parameters (gamma, h, and stopping criteria) constant testing: E.g., a = 0.99, 0.999, 0.8, etc and b = 0.11, 0.15, 0.2, etc. If I had found the same minima in those series of a and b, for example 2, I would confirm that there are only 2 minima in the function.
 
 ## Exercise 2
 <br/>
