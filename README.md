@@ -48,13 +48,15 @@ Step 3: After passing all the parameters, I got the results from four different 
 
 Step 4: Based on the scenario above, if I want to run a small number of trials using the API, I would pick `0.25` as my learning rate gamma to avoid over-shooting or over-dampening. I decided to double my number of iterations since I have no clue for the query function and not knowing how many minima there would be, I wanted slightly more trials to find the minima. 
 
-I choosed a = 0.3 and b = 0.7 as my initial guesses. From my results, I saw that the minimum in this query was 1.100000. The errors converged to 1.100000 after 7 trials, even though a and b were still changing slightly afterwards. However, I was not sure if I found my global minimum or not. I might be stucked at my local minimum atfter 7 iteration. Thus, this should be my true local minimum 1.100000 where a = 0.216607 and b = 0.689036. 
+I choosed a = 0.3 and b = 0.7 as my initial guesses. From my results, I saw that the minimum in this query was 1.100000. The errors converged to 1.100000 after 20 trials, even though a and b were still changing slightly afterwards. However, I was not sure if I found my global minimum or not. I might be stucked at my local minimum atfter 20 iteration. Thus, this should be my true local minimum 1.100000 where a = 0.215950 and b = 0.688950. 
 
 ![error_result_1](https://github.com/kristalz/BIS634/blob/main/Images/HW4/Error_result_1.jpg)
 
-Naively, I wanted to guess other values to find if there were value smaller than 1.100000. This time, I chosed a = 0.9 and b = 0.1 as my initial guesses. From my results, I saw that the minimum in this query was 1.000000, where a = 0.711950 and b = 0.168950. The function converged when after 11 iterations. This would be my global minimum.  
+Naively, I wanted to guess other values to find if there were value smaller than 1.100000. This time, I chosed a = 0.9 and b = 0.1 as my initial guesses. From my results, I saw that the minimum in this query was 1.000000, where a = 0.711950 and b = 0.168950. The function converged when after 20 iterations. Since there was one local minimum and one global minimum, I knew that this smaller value would be my global minimum.  
 
 ![error_result_2](https://github.com/kristalz/BIS634/blob/main/Images/HW4/Error_results_2.jpg)
+
+Generally, if I had not known how many minima there were, I would use the following stratergies to avoid local minima: 1) Start with different guesses and let each evolve as I did early. I might woncider chosing a series of a and b for while keeping other parameters (gamma, h, and stopping criteria) constant testing: E.g., a = 0.99, 0.999, 0.8, etc and b = 0.11, 0.15, 0.2, etc. 2) Allow stochastic jumps beyond the local area. 3) Stochastically accept increases to the function values. 4) Use a different learning rate to avoid missing the minima by overshooting or stop finding the minima earlier. 
 
 ## Exercise 2
 <br/>
