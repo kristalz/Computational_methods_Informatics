@@ -66,6 +66,7 @@ Step 2: Create the first route -- `"/"`the index page by returning the index htm
 
 ![Flask1](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask1.jpg)
 
+
 3. I added some stylistic elements in the index page. I created a `main.css` file that stored inside the `css` folder under the `static` folder. Inside the css file, I added a background colour, and set the margins, font, size and colour of the heading text `<h1>` and the paragraph text `<p>`. Then, I edited my index html file to include the CSS file using the line of code `<link rel="stylesheet" href='/static/css/main.css'/>`. 
 
 4. I also added an map image that displays distribution of cancer in United States in the index page by using `<img src="{{url_for('static', filename='StateCancerProfilesMap.png')}}"width=1200>`. 
@@ -414,7 +415,33 @@ We could see that using k=5 model is better because it flatouts noise. It will a
 ## Appendix
 Please also refer the scripts for five exercises in the Script/HW4 folder (https://github.com/kristalz/BIS634/tree/main/Scripts/HW5).
 
-### Exercise 1: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise1.ipynb and https://github.com/kristalz/BIS634/tree/main/Scripts/HW5/Exercise1-Flask
+### Exercise 1: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise1.ipynb 
+
+![image](https://user-images.githubusercontent.com/90003165/144676325-d180c710-fb5d-4ea5-9782-9bcddd49271f.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144676370-7512f16c-c244-4c70-87e5-1722b0c74a34.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144676410-543746a8-7cf6-43b7-ab2a-ac1f770ef34b.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144676452-85405ed3-5ec1-4cd0-aca3-a872354fe999.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144676492-d72d5e49-2a28-4837-9222-9d7967714029.png)
+
+https://github.com/kristalz/BIS634/tree/main/Scripts/HW5/Exercise1-Flask
+
+Templates: 
+
+Index: 
+
+![image](https://user-images.githubusercontent.com/90003165/144676659-5479a54c-a2cc-4b43-8884-6cc801ef7a72.png)
+
+Info: 
+
+![image](https://user-images.githubusercontent.com/90003165/144676771-a56d9ccf-15bd-4f9a-a090-e13a05684eae.png)
+
+Error:
+
+![image](https://user-images.githubusercontent.com/90003165/144676916-ce73524b-9537-4adb-8b56-de8cd30bbe6f.png)
 
 
 ### Exercise 2: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise2.ipynb
