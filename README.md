@@ -454,7 +454,10 @@ Plot.html:
 ![image](https://user-images.githubusercontent.com/90003165/144677059-fcd9caa5-5d16-4c3d-9cae-e0c64d99496e.png)
 
 
-
 ### Exercise 2: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise2.ipynb
- 
+
+![image](https://user-images.githubusercontent.com/90003165/144677341-86252a63-d1dc-488c-9ea3-10a8e41c6421.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677474-7b33c44f-ac14-46be-870c-353865f7629a.png)
+
 ### Exercise 3: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise3.ipynb
