@@ -48,12 +48,13 @@ Step 3: Remove the lines that are not inside the table. From the table, I know t
 Step 4: Remove the reference numbers in the state column. Since the reference number in parentheses are in the last three indexes in the string of state + reference number (e.g.,"Connecticut(7)"), I applied a for loop in the data set to replace the old string with a new string that will not have the last three indexes: `data['State'][i] = data['State'][i][0:-3]`. 
 
 Step 5: Export the cleaned data to a csv file using `.to_csv`. 
+The file can be accessed through here: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/cancer_profiles.csv
 
 ### Use Flask to implement a server that provides three routes inside a server file (server.py)
 
 #### File Structure
 
-![flask_dir]()
+![flask_dir](https://github.com/kristalz/BIS634/blob/main/Images/HW5/flask_dir.jpg)
 
 Step 1: Create the Flask application object using `app = Flask(__name__)`, which contains data about the application and also methods that tell the application to do certain actions. 
 
@@ -63,7 +64,7 @@ Step 2: Create the first route -- `"/"`the index page by returning the index htm
 
 2. I created a `<form>` element that allows a user to input text and return to another route `/info` that contains the information about the state. Specifically, the information will be returned by a "GET" method. I turned off the `autocompletion` of the text using the `autocomplete="off"`; used the `autofocus name = "state"` attribute to let the route automatically get focus when the page loads; and added a `placeholder="State"` attribute to prompt the user to type a specific state. Then I used a button `<input type="submit">` to submit form data to a form-handler, which processes the input data. I named the button as "Find". 
 
-![Flask1]()
+![Flask1](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask1.jpg)
 
 3. I added some stylistic elements in the index page. I created a `main.css` file that stored inside the `css` folder under the `static` folder. Inside the css file, I added a background colour, and set the margins, font, size and colour of the heading text `<h1>` and the paragraph text `<p>`. Then, I edited my index html file to include the CSS file using the line of code `<link rel="stylesheet" href='/static/css/main.css'/>`. 
 
@@ -73,24 +74,24 @@ Step 3: Create the second route -- `"/state/<string:name>"` that returns JSON-en
 
 Please see an example of Connecticut: 
 
-![Flask_json]()
+![Flask_json](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask_json.jpg)
 
 Step 4: Create the third route -- `"/info", methods=["GET"]` that takes the name of the state as a GET argument and return either same information as the API above if the state name is valid or an error page if the state name is invalid. 
 
 1. I used a function `request.args.get` to get the information inside the csv file. If the user enter an invcalid state name, for example, if the state name is misspelled, it will return an error page stated that "Please enter a valid state." Please see example of error page below by not mispelling "Connecticut": 
 
-![Flask_error]()
+![Flask_error](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask_error.jpg)
 
 2. However, capitalization of input will not lead to errors. Inside the server file, I converted all the states in the csv file to lower case in stored in a list `states_lower`. I stated that "if state.lower() not in states_lower," the error statement will display in an error page. Thus, I also created an error page that incudes a heading "Error...", the error statement, and a button "back" that allows the user to return to the homepage /. 
 
 3. When the user enter a valid state name regardless lower or upper cases, e.g., "New York", "new york", "New york", an info page will be returned and display the name of state and the incidece rate of that state. I created an info html file that includes the information for this page. There is also a button that promts the user to return to the homepage. 
 Here are some examples of "New York", "new york", "New york":
 
-![Flask2]()
+![Flask2](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask2.jpg)
 
-![Flask3]()
+![Flask3](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask3.jpg)
 
-![Flask4]()
+![Flask4](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask4.jpg)
 
 In both error and info html, I applied another css style sheet that set the font and color of the headings. 
 
@@ -117,7 +118,7 @@ The div element is the Plotly chart container. Inside the `<script>` tag I have 
 
 The user can hover over any column in the bar chart to visualize the incidence rates for each state. For example in the screenshot below, the bar chart displayed cases in Minnesota. 
 
-![Flask_plot]()
+![Flask_plot](https://github.com/kristalz/BIS634/blob/main/Images/HW5/Flask_plot.jpg)
 
 The user can return to the home page using the "Back" button below the chart. 
 
@@ -148,11 +149,11 @@ Step 5: Test if 55 or 42 is in the my_tree. I confirmed that "my_tree.__contains
 
 Step 6: Create a `timeit` function that used various sizes n of trees ([1,10,100,1000,1e4,1e5,1e6]) populated with random integers in each call to in with 1000 attempts. For each size n of tree, the function will find 10 numbers in a sequence I generated and time the average execution time of finding those numbers. I returned the minimum execution time out of 1000 attempts and demonstrated the execution time of in on a log-log plot. From the graph below, we could see that the run time required for checking if a number is in the tree increased sharply from n = 10 to n = 1000, and slightly declined from n = 1000 to n = 1e4. After that, the curve of execution time was almost horizontal and in O(log n) times. 
 
-![plot1]()
+![plot1](https://github.com/kristalz/BIS634/blob/main/Images/HW5/plot1.png)
 
 Step 7: Create another `timeit` function that used various sizes n of trees ([1,10,100,1000,1e4,1e5]) populated with random integers in each call to in with 100 attempts. Again, the function will return the minimum execution time out of 100 attempts. I demonstrate the execution time of setting up the tree on a log-log plot and compared it with a linear and quadratic curve. I took the scale of the actual setup execution time at 0 and multiplied that in both linear and quadratic graph, thus allowing the three curves on the same scale in the plot. From the plot below, we could see that the curve of setup time (O(n log n)) lied between the linear (O(n)) and quadratic curves (O(n**2)). 
 
-![plot2]()
+![plot2](https://github.com/kristalz/BIS634/blob/main/Images/HW5/plot2.png)
 
 
 ## Exercise 3
@@ -192,7 +193,7 @@ pc1 = data_reduced[:, 1]
 ```
 5. Plot a scatterplot of pc0 and pc1, color-coding by type of rice.
 
-![pcs_plot]()
+![pcs_plot](https://github.com/kristalz/BIS634/blob/main/Images/HW5/pcs_plot.png)
 
 From the plot above we could see that there were a large overlapping area of "Cammeo"(red points) and "Osmancik"(blue points) from about -1.5 to 1.5 on the PC0 axis. This will be concerning when implementing k-nearest neighbors due to the following reason:
 Ideally we will hope to separate the two clusters of points as much as possible to classify for those points. However, it is difficult to classify the points in the overlapping area corretly since they can possibly be assigned to either category given k nearest neighbors surrounding those points. 
@@ -241,7 +242,7 @@ Four branches `BRll`, `BRlh`, `BRhl`, `BRhh` will be add to each node until all 
 - The third branch `BRhl` takes the median and maximum vectors in x axis, minimum and median vectors in y axis as bounds. Vectors in "PC0" that are larger than and equal to the middle vectors and in "PC1" that are smaller than the middle vectors will be added in this branch. 
 - The last branch `BRhh` takes the median and maximum vectors in x axis, median and maximum vectors in y axis as bounds. Vectors in "PC0" and "PC1" that are larger than and equal to the middle vectors will be added in this branch. 
 
-![quad_subdivided]()
+![quad_subdivided](https://github.com/kristalz/BIS634/blob/main/Images/HW5/quad_subdivided.jpg)
 
 `dist(self,p1,p2)`: Calcuate the distances between two points using the euclidean metric: `((p1[0]-p2[0])**2+(p1[1]-p2[1])**2)**0.5`. ([0] and [1] represents x and y coordinate of a point1 and point2). 
 
@@ -381,7 +382,7 @@ Sensitivity = 86.56%
 Specificity = 91.06%
 Precision = 87.86%
 
-![cf_k=1]()
+![cf_k=1](https://github.com/kristalz/BIS634/blob/main/Images/HW5/cm_k%3D1.png)
 
 - When k=5:
 ```
@@ -397,7 +398,7 @@ Sensitivity = 89.51%
 Specificity = 92.39%
 Precision = 89.78%
 
-![cf_k=5]()
+![cf_k=5](https://github.com/kristalz/BIS634/blob/main/Images/HW5/cm_k%3D5.png)
 
 Interpretation:
 
@@ -411,10 +412,11 @@ We could see that using k=5 model is better because it flatouts noise. It will a
 
 
 ## Appendix
-Please also refer the scripts for five exercises in the Script/HW4 folder (https://github.com/kristalz/BIS634/tree/main/Scripts/HW4).
+Please also refer the scripts for five exercises in the Script/HW4 folder (https://github.com/kristalz/BIS634/tree/main/Scripts/HW5).
 
-### Exercise 1:
+### Exercise 1: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise1.ipynb and https://github.com/kristalz/BIS634/tree/main/Scripts/HW5/Exercise1-Flask
 
-### Exercise 2:
 
-### Exercise 3:
+### Exercise 2: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise2.ipynb
+ 
+### Exercise 3: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise3.ipynb
