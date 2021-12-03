@@ -460,4 +460,29 @@ Plot.html:
 
 ![image](https://user-images.githubusercontent.com/90003165/144677474-7b33c44f-ac14-46be-870c-353865f7629a.png)
 
+![image](https://user-images.githubusercontent.com/90003165/144677621-cb08cedd-b131-4b20-9040-763e41a75358.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677666-39d3a370-d4e5-474f-b85f-29cfbdccf957.png)
+
+
 ### Exercise 3: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise3.ipynb
+
+![image](https://user-images.githubusercontent.com/90003165/144677763-d1d3a8b9-4b07-45e5-9ee5-83b0209e0b78.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677794-04e9e5f3-3eac-4090-98b4-22e778d45b09.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677826-8241ecf1-e59e-4e29-a0af-982862727f64.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677861-a0708646-9704-44a8-a8c6-98f745fd2fdb.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677892-26ecf0a5-8e71-4948-b26a-7683b9516399.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677915-187fc01a-b86f-4abc-a6e8-d144fb3f7352.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677932-5e670b17-7dca-479d-8f3e-b933ede10cfa.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677973-223ee1bb-1ac3-4ebc-a5ed-ebdcce1f554e.png)
+
+
+
+
