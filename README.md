@@ -429,19 +429,30 @@ Please also refer the scripts for five exercises in the Script/HW4 folder (https
 
 https://github.com/kristalz/BIS634/tree/main/Scripts/HW5/Exercise1-Flask
 
+Server.py:
+
+![image](https://user-images.githubusercontent.com/90003165/144677123-c20aaf81-c403-4153-933d-e4a039137f69.png)
+
+![image](https://user-images.githubusercontent.com/90003165/144677151-81f72a6e-7045-44d1-8475-5beb3523e531.png)
+
 Templates: 
 
-Index: 
+Index.html: 
 
 ![image](https://user-images.githubusercontent.com/90003165/144676659-5479a54c-a2cc-4b43-8884-6cc801ef7a72.png)
 
-Info: 
+Info.html: 
 
 ![image](https://user-images.githubusercontent.com/90003165/144676771-a56d9ccf-15bd-4f9a-a090-e13a05684eae.png)
 
-Error:
+Error.html:
 
 ![image](https://user-images.githubusercontent.com/90003165/144676916-ce73524b-9537-4adb-8b56-de8cd30bbe6f.png)
+
+Plot.html:
+
+![image](https://user-images.githubusercontent.com/90003165/144677059-fcd9caa5-5d16-4c3d-9cae-e0c64d99496e.png)
+
 
 
 ### Exercise 2: https://github.com/kristalz/BIS634/blob/main/Scripts/HW5/HW5-Exercise2.ipynb
