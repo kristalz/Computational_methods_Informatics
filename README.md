@@ -225,11 +225,11 @@ Step 2: Create a quad tree class `QTree` and its attributes and methods
 
 1. Attribute: 
 
-`root`: Use class `QTNode` to store the minimum and maximum values in x and y axises as the root node.
+`root`: Use class `QTNode` to store the minimum and maximum values in x and y axes as the root node. 
 
 2. Methods:
 
-`addnode(self,node,data)`: Add the points from the data set to tree nodes. 
+`addnode(self,node,data)`: Add the points from the data set to tree nodes. This method will be used to add the points in the training data set.
 
 - If the data set has no values, return none. 
 
