@@ -375,7 +375,8 @@ Step 3: Implement 5-fold cross-validation with both naive and quad tree nearest 
 4. Set up the quad tree by taking the minimum and maximum (x,y) coordinates that coorespond to "PC0" and "PC1" in the training data frame as the tree's bound. Then add all the points in the training data frame into the tree.
 
 ```
-
+datatree=QTree(min(train["PC0"]),max(train["PC0"]),min(train["PC1"]),max(train["PC1"]))
+datatree.addnode(datatree.root,train)
 ```
 
 5. Implement the both quad and naive knn algorithms by interating each row in the test data frame to find the corresponding classes for the k nearest neighbors. Then add the true classification in the test data to list for comparison. 
@@ -391,10 +392,13 @@ for i,d in test.iterrows():
 true = true + test_data['CLASS'].to_list
 ```
 
-6. Use the confusion matrix from sklearn to confirm the result using two algorithms. I also wrote my own confusion matrix by using the "logical_and" function from numpy to compare predicted and the actual results. Here, "Cammeo" represents positive while "Osmancik" represents negative. The sklearn's confusion matrix can be also used to check the results from my own confusion matrix. 
+6. Use the confusion matrix from sklearn to confirm the result using two algorithms. I also wrote my own confusion matrix by using the "logical_and" function from numpy to calculate the true positive, true negative, fals positive and false negative results. Here, "Cammeo" represents positive while "Osmancik" represents negative. The sklearn's confusion matrix can be also used to check the results from my own confusion matrix. 
 
 ```
-
+TP = np.sum(np.logical_and(true_labels == 'Cammeo', pred_labels == 'Cammeo'))
+TN = np.sum(np.logical_and(true_labels == 'Osmancik', pred_labels == 'Osmancik'))
+FP = np.sum(np.logical_and(true_labels == 'Osmancik', pred_labels == 'Cammeo')) 
+FN = np.sum(np.logical_and(true_labels == 'Cammeo', pred_labels == 'Osmancik'))
 ```
 
 Results： 
