@@ -366,6 +366,37 @@ while stack:
 
 Step 3: Implement 5-fold cross-validation with both naive and quad tree nearest neighbors algorithms to predict the types of rice in the rice dataset. Provide confusion matrix with k=1 and k=5.
 
+1. Initialize three empty lists: `true` to store the actual class in the test data; `pred_quad` and `pred_naive` to store the predicted results suing two knn algorithms, respectively.
+
+2. For k=1 and k=5, use 5-fold to divide the dataset in 5 groups of samples and shuffle them. Split the samples of data into training and test dataset. 
+
+3. Reduce the train and test data into 2 dimensional using PCA and store into two different data frame. 
+
+4. Set up the quad tree by taking the minimum and maximum (x,y) coordinates that coorespond to "PC0" and "PC1" in the training data frame as the tree's bound. Then add all the points in the training data frame into the tree.
+
+```
+
+```
+
+5. Implement the both quad and naive knn algorithms by interating each row in the test data frame to find the corresponding classes for the k nearest neighbors. Then add the true classification in the test data to list for comparison. 
+ 
+```
+for i,d in test.iterrows():
+    res_quad = Counter([t[1].cls for t in datatree.getneighbors([d["PC0"],d["PC1"]],k)]).most_common(1)[0][0]
+    res_naive = Counter([t[1].cls for t in datatree.getneighbors([d["PC0"],d["PC1"]],k)]).most_common(1)[0][0]
+                
+    pred_quad.append(res_quad)
+    pred_naive.append(res_naive)
+
+true = true + test_data['CLASS'].to_list
+```
+
+6. Use the confusion matrix from sklearn to confirm the result using two algorithms. I also wrote my own confusion matrix by using the "logical_and" function from numpy to compare predicted and the actual results. Here, "Cammeo" represents positive while "Osmancik" represents negative. The sklearn's confusion matrix can be also used to check the results from my own confusion matrix. 
+
+```
+
+```
+
 Results： 
 
 - When k=1： 
